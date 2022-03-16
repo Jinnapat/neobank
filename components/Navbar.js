@@ -40,7 +40,7 @@ export default function Navbar() {
     const goToPage = (page) => {
         switch(page) {
             case "Deposit":
-                router.push('/p2pexchange');
+                router.push('/deposit');
                 break;
             case "Loan":
                 router.push('/loan');
