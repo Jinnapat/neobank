@@ -5,6 +5,7 @@ const SignupPage = () => {
     const [businessName, setBusinessName] = useState('')
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
+    const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [rePassword, setRePassword] = useState('')
 
@@ -20,6 +21,7 @@ const SignupPage = () => {
                 <PaddedInputField type="text" placeholder="first name" setter={setFirstName}/>
                 <PaddedInputField type="text" placeholder="last name" setter={setLastName}/>
             </div>
+            <PaddedInputField type="email" placeholder="email" setter={setEmail}/>
             <PaddedInputField type="password" placeholder="password" setter={setPassword}/>
             <PaddedInputField type="password" placeholder="re-enter password" setter={setRePassword}/>
             <div className="space-x-1">
