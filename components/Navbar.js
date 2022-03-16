@@ -4,13 +4,11 @@ import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
 import { useRouter } from 'next/router'
 import { useDispatch, useSelector } from 'react-redux'
-import ConnectWallet from '../components/utils/ConnectWallet'
 import { connectAndDispatch } from '../controllers/connectWallet'
-import { route } from 'next/dist/server/router'
 import userIcon from "../public/image/icons/user.png"
 import Image from "next/image"
 import { logOut } from '../redux/actions/userAction'
-
+import Link from 'next/link'
 
 {/* <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfwolAaPkgpsAyeI8AOPK2-8fndpzEqw5JoD2S28PihkM2zCQ/viewform?embedded=true" width="640" height="1083" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe> */}
 const navigation = [
@@ -110,7 +108,7 @@ export default function Navbar() {
                 </div>
               </div>
                 
-            {!publicAddress && <ConnectWallet logUserIn={logUserIn} />}
+            {!publicAddress && <Link href="signin"><button>Signin</button></Link>}
 
             {/* User profile */}
             {publicAddress && (
