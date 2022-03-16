@@ -6,7 +6,7 @@ import styles from '../styles/Home.module.css'
 
 export default function Home() {
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>Neobank</title>
         <meta name="description" content="Neobank for deposit crypto and get loan for SMEs" />
