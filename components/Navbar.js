@@ -9,6 +9,7 @@ import userIcon from "../public/image/icons/user.png"
 import Image from "next/image"
 import { logOut } from '../redux/actions/userAction'
 import Link from 'next/link'
+import MainButton from './MainButton'
 
 {/* <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfwolAaPkgpsAyeI8AOPK2-8fndpzEqw5JoD2S28PihkM2zCQ/viewform?embedded=true" width="640" height="1083" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe> */}
 const navigation = [
@@ -108,7 +109,7 @@ export default function Navbar() {
                 </div>
               </div>
                 
-            {!publicAddress && <Link href="signin"><button>Signin</button></Link>}
+            {!publicAddress && <MainButton><Link href="signin">Signin</Link></MainButton>}
 
             {/* User profile */}
             {publicAddress && (
