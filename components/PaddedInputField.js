@@ -5,7 +5,7 @@ const PaddedInputField = ({type, placeholder, setter}) => {
 
     return (
         <input
-            className='p-1 border-2 ' 
+            className='p-1 border-2' 
             type={type}
             onChange={updateState}
             placeholder={placeholder}
