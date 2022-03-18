@@ -9,7 +9,9 @@ import UST from "../public/icons/crypto/UST.png"
 
 const Banner = () => {
   return (
-    <div className='grid grid-cols-1 w-8/12 px-20 place-items-center mt-10'>
+    <div className='grid grid-cols-1 w-10/12 px-20 place-items-center bg-gray-50 rounded-xl py-10'>
+        
+        {/* Overview */}
         <div className='grid grid-cols-8 place-content-center'>
             
             <p className='col-span-4 px-4 text-4xl font-bold'>
@@ -19,7 +21,7 @@ const Banner = () => {
             <div className='col-span-4 grid grid-cols-10 w-full place-items-center pl-4'>
                 <div className='col-span-4 space-y-4'>
                     <p className='text-gray-500'>Stablecoins Supplier</p>
-                    <div className=''>
+                    <div className='grid  grid-cols-4'>
                         <Image src={USDT} width={40} height={40} />
                         <Image src={USDC} width={40} height={40} />
                         <Image src={BUSD} width={40} height={40} />
@@ -54,7 +56,7 @@ const Banner = () => {
             </div>
 
             <div className='col-span-4 text-2xl font-medium'>
-                <p>Cryptocurrency supplier are the people who deposit cryptocurrency to our platform and they will get interest.</p>
+                <p>Stablecoins supplier are the people who deposit stablecoins to our platform and they will get interest.</p>
             </div>
 
         </div>
@@ -68,7 +70,7 @@ const Banner = () => {
             </div>
 
             <div className='col-span-4 text-2xl font-medium'>
-                <p>SMEs are the samll and medium enterprise whose operate their own business on emerging economy such as Thailand,Indonesia,Philippines,Vietnam.</p>
+                <p>SMEs are small and medium enterprises whose operate their own business on emerging economy such as Thailand,Indonesia,Philippines,Vietnam,etc.</p>
             </div>
 
 
