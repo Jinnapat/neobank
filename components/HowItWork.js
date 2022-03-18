@@ -80,7 +80,7 @@ let smeProcesses = [
         icon:<CheckCircleIcon className='h-12 text-green-500 col-span-2 ' />,
     },
     {
-        processName:"Request loan<",
+        processName:"Request loan",
         processDetail:"Request to get loan from Neobank as you need for your project.",
         iconType:"icon",
         image:"",

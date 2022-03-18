@@ -56,7 +56,7 @@ const Banner = () => {
             </div>
 
             <div className='col-span-4 text-2xl font-medium'>
-                <p>Cryptocurrency supplier are the people who deposit cryptocurrency to our platform and they will get interest.</p>
+                <p>Stablecoins supplier are the people who deposit stablecoins to our platform and they will get interest.</p>
             </div>
 
         </div>
@@ -70,7 +70,7 @@ const Banner = () => {
             </div>
 
             <div className='col-span-4 text-2xl font-medium'>
-                <p>SMEs are the samll and medium enterprise whose operate their own business on emerging economy such as Thailand,Indonesia,Philippines,Vietnam.</p>
+                <p>SMEs are small and medium enterprises whose operate their own business on emerging economy such as Thailand,Indonesia,Philippines,Vietnam,etc.</p>
             </div>
 
 
