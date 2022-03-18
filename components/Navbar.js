@@ -8,8 +8,6 @@ import { connectAndDispatch } from '../controllers/connectWallet'
 import userIcon from "../public/image/icons/user.png"
 import Image from "next/image"
 import { logOut } from '../redux/actions/userAction'
-import Link from 'next/link'
-import MainButton from './MainButton'
 
 {/* <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfwolAaPkgpsAyeI8AOPK2-8fndpzEqw5JoD2S28PihkM2zCQ/viewform?embedded=true" width="640" height="1083" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe> */}
 const navigation = [
@@ -35,6 +33,7 @@ export default function Navbar() {
     const logUserIn = () => {
         connectAndDispatch(dispatch,router);
     }
+
     
     const goToPage = (page) => {
         switch(page) {
@@ -49,6 +48,12 @@ export default function Navbar() {
                 break;
             case "Feedback":
                 router.push('/feedback');
+                break;
+            case "Signin":
+              router.push('/auth/signin');
+              break;
+            case "Register":
+                router.push('/auth/register');
                 break;
             default:
               router.push('/');
@@ -109,7 +114,24 @@ export default function Navbar() {
                 </div>
               </div>
                 
-            {!publicAddress && <MainButton><Link href="signin">Signin</Link></MainButton>}
+            {/* Authentication */}
+            <div className='flex space-x-4'>
+                {/* Signin */}
+                <button 
+                  className='bg-blue-600 px-5 py-2 rounded-xl text-white font-bold'
+                  onClick={() => goToPage("Signin")}
+                >
+                  Sign In
+                </button>
+                {/* Register */}
+                <button 
+                  onClick={() => goToPage("Register")}
+                  className='bg-amber-300 px-5 py-2 rounded-xl font-bold'
+                >
+                  Register
+                </button>
+            </div>
+            
 
             {/* User profile */}
             {publicAddress && (

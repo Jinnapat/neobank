@@ -21,9 +21,7 @@ export default function ConnectWallet({logUserIn}) {
         <button
           type="button"
           onClick={openModal}
-          className="px-4 py-2 text-sm font-medium text-black bg-amber-500 rounded-md bg-opacity-70 hover:bg-opacity-90 
-            focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 transition duration-100 transform ease-out"
-        >
+          className="px-4 py-2 font-medium text-black bg-amber-300 rounded-md transition duration-100 transform ease-out w-6/12">
           Connect Wallet
         </button>
       </div>
