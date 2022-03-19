@@ -1,29 +1,27 @@
-import {LOGIN,LOGOUT} from "../actionTypes"
+import {SIGNIN,SIGNOUT} from "../actionTypes"
 
 // Initial user state
 export const InitailUserState = {
-    username: "",
-    publicAddress: "",
-    image: "",
-    description: "",
-    promptpayID: "",
+    businessName: "",
+    email: "",
+    firstName: "",
+    lastName: "",
+    receiveEmail: false,
+    uid: ""
 }
 
 const userReducer = (state = InitailUserState,{type,payload}) => {
     switch(type) {
-        case LOGIN : 
+        case SIGNIN : 
             return {
-                username: payload.username,
-                publicAddress: payload.publicAddress,
-                image: payload.profileImage ,
-                description: payload.description,
-                promptpayID: payload.promptpayID,
-                balance:payload.balance,
-                network:payload.network,
-                bankName:payload.bankName,
-                bankAccount:payload.bankAccount,
+                businessName: payload.businessName,
+                email: payload.email,
+                firstName: payload.firstName,
+                lastName: payload.lastName,
+                receiveEmail: payload.receiveEmail,
+                uid: payload.uid
             }
-        case LOGOUT : 
+        case SIGNOUT : 
             return {...InitailUserState}
         default :
             return state

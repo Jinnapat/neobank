@@ -1,4 +1,8 @@
 //* Redux action types
+export const SIGNIN = "SIGNIN" ;
+export const SIGNOUT = "SIGNOUT" ;
+
+
 export const LOGIN = "LOGIN" ;
 export const LOGOUT = "LOGOUT" ;
 export const CRYPTO = "CRYPTO" ;

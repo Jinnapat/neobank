@@ -5,6 +5,7 @@ import { CheckCircleIcon,ExclamationCircleIcon } from '@heroicons/react/outline'
 import { useRouter } from 'next/router'
 const config = require("../../next.config")
 import { v4 as uuidv4 } from 'uuid';
+import TermsAndConditions from "../../components/business/TermsAndConditions"
 
 const SignupPage = () => {
     const [businessName, setBusinessName] = useState('')
@@ -13,19 +14,20 @@ const SignupPage = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [rePassword, setRePassword] = useState('')
+    const [receiveEmail, setReceiveEmail] = useState(false)
     const [termsAndConditions, setTermsAndConditions] = useState(false)
     const router = useRouter()
 
     const onSubmit = async (e) => {
         e.preventDefault();
         let uid = uuidv4();
-        console.log(uid,firstName,lastName,businessName,email,password,rePassword,termsAndConditions)
+        console.log(uid,firstName,lastName,businessName,email,password,rePassword,termsAndConditions,receiveEmail)
         
         if (( checkName(firstName) && checkName(lastName) && checkName(businessName) ) 
             && (checkEmail(email) && checkPassword(password) && checkRePassword(rePassword) && termsAndConditions)
         ){
             console.log("All done,Ready to post to database")
-            let body = {uid,firstName,lastName,businessName,email,password};
+            let body = {uid,firstName,lastName,businessName,email,password,receiveEmail};
             let res = await fetch(`${config.env.devURL}/api/auth/business/`,{
                 method:"POST",
                 body:JSON.stringify(body)
@@ -150,11 +152,21 @@ const SignupPage = () => {
             </div>
             
             <div 
-                className="border-2 p-4 w-fit rounded-lg shadow hover:scale-105 transition duration-150 flex items-center space-x-2"
+                className="border-2 px-4 py-2 w-10/12 rounded-lg shadow transition duration-150 flex items-center justify-start space-x-6 font-medium"
                 >
+                <input type="checkbox" name="receive-email" value={receiveEmail} onChange={() => setReceiveEmail(!receiveEmail)}/>
+                <label htmlFor="receive-email" className=''>
+                    I agree to receive updated email from Neobank.
+                </label>
+            </div>
+            
+            <div 
+                className="border-2 px-4 py-1 w-fit rounded-lg shadow transition duration-150 flex items-center space-x-2"
+                >
+                
                 <input type="checkbox" name="term-condition" value={termsAndConditions} onChange={() => setTermsAndConditions(!termsAndConditions)}/>
-                <label htmlFor="term-condition" className='cursor-pointer hover:text-blue-500'>
-                    agree with our terms & conditions
+                <label htmlFor="term-condition" className=''>
+                    <TermsAndConditions />
                 </label>
             </div>
             <button className='bg-amber-300 text-black max-w-sm px-4 py-2  text-lg w-6/12 place-self-center rounded font-medium' 

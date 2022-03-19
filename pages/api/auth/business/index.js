@@ -7,7 +7,7 @@ export default async function handler(req,res) {
     console.log(req.method);
     
     if (req.method === "POST") {
-        const {uid,firstName,lastName,businessName,email,password} = JSON.parse(req.body)
+        const {uid,firstName,lastName,businessName,email,password,receiveEmail} = JSON.parse(req.body)
         // Create new user
         try {
             let data = await BusinessUserModel.create({
@@ -16,8 +16,9 @@ export default async function handler(req,res) {
                 lastName:lastName,
                 businessName:businessName,
                 email:email,
-                password:password
-            },{new:true})
+                password:password,
+                receiveEmail:receiveEmail
+            })
             res.status(201).json(data)    
         } catch (error) {
             console.log(error);

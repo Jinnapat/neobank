@@ -1,21 +1,18 @@
-import {LOGIN,LOGOUT} from '../actionTypes.js'
+import {SIGNIN,SIGNOUT} from '../actionTypes.js'
 import { InitailUserState } from '../reducers/userReducer.js';
 
 // LOGIN: Set User Data we get from wallets
-export const logIn = (userData) => async (dispatch) =>{
+export const signIn = (userData) => async (dispatch) =>{
     try {
         dispatch({
-            type: LOGIN,
+            type: SIGNIN,
             payload: {
-                username: userData.username,
-                publicAddress: userData.publicAddress,
-                balance:userData.balance,
-                network:userData.network,
-                promptpayID:userData.promptpayID || "",
-                image: userData.image ,
-                description:userData.description,
-                bankName:userData.bankName,
-                bankAccount:userData.bankAccount,
+                businessName: userData.businessName,
+                email: userData.email,
+                firstName: userData.firstName,
+                lastName: userData.lastName,
+                receiveEmail: userData.receiveEmail,
+                uid: userData.uid
             }
         })    
     } catch (error) {
@@ -23,11 +20,9 @@ export const logIn = (userData) => async (dispatch) =>{
     }    
 }
 
-
-// LOGOUT: clear User Data we get from wallets
-export const logOut = () => (dispatch) =>
+export const signOut = () => (dispatch) =>
   dispatch({
-    type:LOGOUT,
+    type:SIGNOUT,
     payload: {
         ...InitailUserState
     },

@@ -1,6 +1,7 @@
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux'
 import thunk from 'redux-thunk'
 import userReducer from './reducers/userReducer'
+import supplierReducer from './reducers/supplierReducer'
 import { persistStore,persistReducer } from 'redux-persist'
 import storage from "redux-persist/lib/storage"
 import tradeReducer from './reducers/tradeReducer'
@@ -12,7 +13,8 @@ const persistConfig = {
 
 const reducers = combineReducers({
     user:userReducer,
-    trade:tradeReducer
+    trade:tradeReducer,
+    supplier:supplierReducer
 })
 
 const persistedReducer = persistReducer(persistConfig,reducers)

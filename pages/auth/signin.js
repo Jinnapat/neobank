@@ -4,12 +4,15 @@ import BusinessSignin from "../../components/business/BusinessSignin"
 import SupplierSignin from "../../components/supplier/SupplierSignin"
 import Head from "next/head"
 import { useRouter } from "next/router"
+import { useDispatch } from "react-redux"
 const config = require("../../next.config")
+import {signIn} from "../../redux/actions/userAction"
 
 const SigninPage = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const router = useRouter();
+    const dispatch = useDispatch();
     
     const goToRegister = () => {
         router.push("/auth/register")
@@ -17,11 +20,11 @@ const SigninPage = () => {
 
     const signUserIn = async () => {
         if (email!=="" && password!==""){
-            let data = await fetch(`${config.env.devURL}/api/auth/business/signin`,{
-                method:"GET",
-                body:JSON.stringify({email,password})
-            }).then(res => res.json())
+            let data = await fetch(`${config.env.devURL}/api/auth/business/signin/${email}/${password}`,)
+            .then(res => res.json())
             console.log(data)
+            dispatch(signIn(data));
+            router.push("/business/dashboard")
         }
     }
 
