@@ -1,5 +1,5 @@
 import {LOGIN,LOGOUT} from '../actionTypes.js'
-import { InitailUserState } from '../reducers/userReducer.js';
+import { InitailUserState } from '../reducers/supplierReducer.js';
 
 // LOGIN: Set User Data we get from wallets
 export const logIn = (userData) => async (dispatch) =>{
@@ -9,13 +9,6 @@ export const logIn = (userData) => async (dispatch) =>{
             payload: {
                 username: userData.username,
                 publicAddress: userData.publicAddress,
-                balance:userData.balance,
-                network:userData.network,
-                promptpayID:userData.promptpayID || "",
-                image: userData.image ,
-                description:userData.description,
-                bankName:userData.bankName,
-                bankAccount:userData.bankAccount,
             }
         })    
     } catch (error) {

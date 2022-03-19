@@ -1,5 +1,5 @@
 import { ethers } from "ethers";
-import { logIn } from "../redux/actions/userAction";
+import { logIn } from "../redux/actions/supplierAction";
 const config = require("../next.config")
 
 const connectWallet = async () => {
@@ -40,7 +40,7 @@ const connectWallet = async () => {
     }
 }
 
-const connectAndDispatch = (dispatch) => {
+const connectAndDispatch = (dispatch,router) => {
     
     connectWallet().then( async ({permission,userAddress,userBalance,userNetwork}) => {
 
@@ -51,21 +51,17 @@ const connectAndDispatch = (dispatch) => {
         }
 
         //* if !permission === false -> You get permission from user to sign them in your web application , let's continue
-        const res = await fetch(`${config.domainName}/api/user/${userAddress}`)
+        const res = await fetch(`${config.env.devURL}/api/auth/supplier/${userAddress}`)
         const userData = await res.json()
         
         dispatch(logIn(
             {
                 username: userData.username,
                 publicAddress: userAddress,
-                balance:userBalance,
-                network:userNetwork,
-                promptpayID:userData.promptpayID || "",
-                image: userData.image ,
-                description:userData.description
             }
         ))
 
+        router.push("/deposit")
     })
 }
 
