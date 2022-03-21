@@ -41,7 +41,7 @@ const SigninPage = () => {
                 <div className={`${selected ? "bg-amber-300 text-balck p-2 rounded-sm font-medium" 
                         : "bg-amber-300 opacity-50 text-balck p-2 rounded-sm font-medium" } `}>
                     <span>Supplier</span>
-                    <span className="text-base"> ( SMEs )</span>
+                    <span className="text-base"> ( Crypto )</span>
                 </div>)
         }        
     }

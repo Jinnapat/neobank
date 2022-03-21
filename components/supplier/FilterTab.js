@@ -37,10 +37,10 @@ export default function TransactionFilter({setTab}) {
               key="0"
               className={({ selected }) =>
                 classNames(
-                  'w-full py-2.5 text-xl leading-5 font-bold text-white rounded-lg',
+                  'w-full py-2.5 text-xl leading-5 font-bold text-black rounded-lg',
                   'focus:outline-none',
                   selected
-                    ? 'bg-blue-500 shadow border-blue-500 border-2'
+                    ? 'bg-blue-600 shadow border-blue-600 border-2 text-white'
                     : 'text-black'
                 )}>
               Dashboard
@@ -53,7 +53,7 @@ export default function TransactionFilter({setTab}) {
                   'w-full py-2.5 text-xl leading-5 font-bold text-black rounded-lg',
                   'focus:outline-none',
                   selected
-                    ? 'bg-amber-400 shadow text-white'
+                    ? 'bg-amber-400 shadow text-black'
                     : 'text-black '
                 )}>
               Account

@@ -4,9 +4,11 @@ import Account from '../components/supplier/desopit/account/Account'
 import FilterTab from "../components/supplier/FilterTab"
 import DepositBanner from '../components/supplier/desopit/DepositBanner'
 import SupplyBoard from '../components/supplier/desopit/dashboard/SupplyBoard'
+import { useSelector } from 'react-redux'
 
 const Deposit = () => {
     const [tab, setTab] = useState("dashboard")
+    const {publicAddress,username} = useSelector(state => state.supplier)
     let accountInfo = {
         username:"Gognumbdev",
         publicAddress:"0x5593572e312C4F8Fc2fe924907624B39D1d6B65c",
@@ -29,7 +31,7 @@ const Deposit = () => {
                 <SupplyBoard accountAssetData={accountAssetData} />
             ) : ( 
                 tab === "account info" && (
-                <Account accountInfo={accountInfo} transactionData={transactionData} />
+                <Account accountInfo={accountInfo} transactionData={transactionData} publicAddress={publicAddress} username={username} />
                 )
             )}      
 
