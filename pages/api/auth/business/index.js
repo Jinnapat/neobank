@@ -1,7 +1,7 @@
 import dbConnect from "../../../../database/dbConnect";
-const {BusinessUserModel} = require("../../../../database/dbModel/BusinessUser.js")
+const {BusinessUserModel} = require("../../../../database/dbModel/BusinessUserModel.js")
 
-export default async function handler(req,res) {    
+export default async function handler(req,res) {
     dbConnect();
 
     console.log(req.method);
