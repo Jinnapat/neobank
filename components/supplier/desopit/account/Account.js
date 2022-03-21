@@ -2,8 +2,9 @@ import AccountBalance from "./AccountBalance"
 import AccountInfo from "./AccountInfo"
 import AccountTransaction from "./AccountTransaction"
 
-const Account = ({accountInfo,transactionData}) => {
-  let {username,publicAddress,assetData} = accountInfo
+const Account = ({accountInfo,transactionData,publicAddress,username}) => {
+  let {assetData} = accountInfo
+
   
   return (
     <div className='grid grid-cols-1 place-items-start w-8/12 p-10'>

@@ -9,6 +9,7 @@ import userIcon from "../public/image/icons/user.png"
 import Image from "next/image"
 import { logOut } from '../redux/actions/userAction'
 import UserNav from './utils/UserNav'
+import SupplierNav from './utils/SupplierNav'
 
 {/* <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfwolAaPkgpsAyeI8AOPK2-8fndpzEqw5JoD2S28PihkM2zCQ/viewform?embedded=true" width="640" height="1083" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe> */}
 const navigation = [
@@ -25,16 +26,9 @@ function classNames(...classes) {
 export default function Navbar() {
     const router = useRouter();
     const dispatch = useDispatch(); 
-    const {username,publicAddress,promptpayID,image,description} = useSelector(state => state.supplier)
+    const {username,publicAddress} = useSelector(state => state.supplier)
     const {uid,firstName,lastName,businessName,email,receiveEmail} = useSelector(state => state.user)
 
-    // const logout = () => {
-    //     dispatch(logOut())
-    // }
-
-    // const logUserIn = () => {
-    //     connectAndDispatch(dispatch,router);
-    // }
     // const goToProfile = () => {
     //   router.push({
     //     pathname:"/profile/[publicAddress]",
@@ -72,6 +66,7 @@ export default function Navbar() {
         }
   }
 
+  console.log(publicAddress)
     
 
   return (
@@ -105,6 +100,11 @@ export default function Navbar() {
                           <div></div>
                         )
                       }
+                      if(item.name === "Loan" && publicAddress){
+                        return (
+                          <div></div>
+                        )
+                      }
                       
                       return (
                           <a
@@ -127,11 +127,11 @@ export default function Navbar() {
               </div>
                 
             {/* Authentication */}
-            {!uid && (
+            {(!uid && !publicAddress ) && (
               <div className='flex space-x-4'>
                 {/* Signin */}
                 <button 
-                  className='bg-blue-600 px-5 py-2 rounded-xl text-white font-bold'
+                  className='bg-blue-600 px-5 py-2 rounded text-white font-bold'
                   onClick={() => goToPage("Signin")}
                 >
                   Sign In
@@ -139,7 +139,7 @@ export default function Navbar() {
                 {/* Register */}
                 <button 
                   onClick={() => goToPage("Register")}
-                  className='bg-amber-300 px-5 py-2 rounded-xl font-bold'
+                  className='bg-amber-300 px-5 py-2 rounded font-bold'
                 >
                   Register
                 </button>
@@ -151,6 +151,10 @@ export default function Navbar() {
             {/* User profile */}
             {uid && (
               <UserNav firstName={firstName} lastName={lastName} uid={uid} email={email} businessName={businessName} receiveEmail={receiveEmail} />
+            )}
+
+            {publicAddress && (
+              <SupplierNav username={username} publicAddress={publicAddress} />
             )}
 
               

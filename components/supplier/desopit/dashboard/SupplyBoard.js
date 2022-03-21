@@ -26,4 +26,4 @@ const SupplyBoard = ({accountAssetData}) => {
 
 export default SupplyBoard
 
-let boardHeaderNames = ["Asset","APY","Deposits","Interest","Balance"]
+let boardHeaderNames = ["Asset","APY","Deposits","Interest","Services"]

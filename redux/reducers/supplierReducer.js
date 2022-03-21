@@ -4,9 +4,6 @@ import {LOGIN,LOGOUT} from "../actionTypes"
 export const InitailUserState = {
     username: "",
     publicAddress: "",
-    image: "",
-    description: "",
-    promptpayID: "",
 }
 
 const supplierReducer = (state = InitailUserState,{type,payload}) => {
@@ -15,13 +12,6 @@ const supplierReducer = (state = InitailUserState,{type,payload}) => {
             return {
                 username: payload.username,
                 publicAddress: payload.publicAddress,
-                image: payload.profileImage ,
-                description: payload.description,
-                promptpayID: payload.promptpayID,
-                balance:payload.balance,
-                network:payload.network,
-                bankName:payload.bankName,
-                bankAccount:payload.bankAccount,
             }
         case LOGOUT : 
             return {...InitailUserState}
