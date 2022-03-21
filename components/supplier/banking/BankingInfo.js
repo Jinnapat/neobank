@@ -6,14 +6,17 @@ const BankingInfo = ({transaction,amount,setAmount,assetInfo}) => {
     <div className="my-2">
       {/* Amount */}
       <div className='grid grid-cols-1 place-items-start gap-y-1 my-2 text-xl'>
-          <p className='font-bold flex space-x-2'>
-            Amount
-          </p>
-          <div className="flex items-center space-x-4">
-            <PaddedInputField type="email" placeholder="Email" setter={setAmount} value={amount} />
-            <p>{asset}</p>
-          </div>
+        <p className='font-bold flex space-x-2'>
+          Amount
+        </p>
+        <div className="flex items-center space-x-4">
+          <PaddedInputField type="amount" placeholder="amount" setter={setAmount} value={amount} />
+          <p>{asset}</p>
+        </div>
       </div>
+    
+      
+  
 
       <div className="grid grid-cols-8 space-x-4 text-xl py-4">
         <p className="col-span-4 text-gray-500">Supply APY</p>

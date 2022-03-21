@@ -5,10 +5,12 @@ import BUSD from "../../../../../public/icons/crypto/BUSD.png"
 import UST from "../../../../../public/icons/crypto/UST.png"
 import Image from "next/image"
 import BankingCard from "../../../banking/BankingCard"
+import { useState } from "react"
 
 const UserSupplyInfo = ({assetInfo,index}) => {
     let {asset,apy,deposits,interest,balance} = assetInfo;
-    
+    const [transactionState, settransactionState] = useState("nothing")
+
   return (
     <tr key={index} className="hover:bg-slate-50 text-xl cursor-pointer">
         {/* Asset */}

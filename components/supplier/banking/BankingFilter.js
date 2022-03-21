@@ -5,27 +5,27 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function TransactionFilter({setTab,tab}) {
+export default function TransactionFilter({setTransaction,transaction}) {
   
   const [selectedIndex, setSelectedIndex] = useState(0)
     
   useEffect(() => {
-        if(tab==="deposit"){
+        if(transaction==="deposit"){
         handleTabChange(0)
         }else{
         handleTabChange(1)
         }
-    }, [tab])
+    }, [transaction])
     
   const handleTabChange = (index) => {
         switch(index) {
             case 0:
               setSelectedIndex(0);
-              setTab("deposit")
+              setTransaction("deposit")
               break;
             case 1:
               setSelectedIndex(1);
-              setTab("withdraw")
+              setTransaction("withdraw")
               break;
         }
     }

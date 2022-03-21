@@ -1,5 +1,5 @@
 import { Dialog, Transition } from '@headlessui/react'
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { XCircleIcon } from '@heroicons/react/outline';
 import Image from "next/image"
 import USDT from "../../../public/icons/crypto/USDT.png"
@@ -9,13 +9,21 @@ import BUSD from "../../../public/icons/crypto/BUSD.png"
 import UST from "../../../public/icons/crypto/UST.png"
 import BankingFilter from "./BankingFilter"
 import BankingInfo from './BankingInfo';
+import { useSelector } from 'react-redux';
+import ConfirmButton from "./ConfirmCard"
 
 export default function BankingCard({assetInfo}) {
   let [isOpen, setIsOpen] = useState(false)
-  const [tab, setTab] = useState("deposit")
+  const [transaction, setTransaction] = useState("deposit")
   const [amount, setAmount] = useState(0)
-
+  const {username,publicAddress} = useSelector(state => state.supplier)
   let {asset,apy,deposits,interest,balance} = assetInfo
+
+  useEffect(() => {
+    setAmount(0);
+  }, [transaction])
+  
+  
   function closeModal() {
     setIsOpen(false)
   }
@@ -23,8 +31,6 @@ export default function BankingCard({assetInfo}) {
   function openModal() {
     setIsOpen(true)
   }
-
-  console.log(tab)
 
   return (
     <>
@@ -88,11 +94,16 @@ export default function BankingCard({assetInfo}) {
  
                 {/* Banking Card body */}
                 <div className='grid grid-cols-1 place-items-center'>
-                  <BankingFilter setTab={setTab} tab={tab}/>
-                  <BankingInfo transaction={tab} amount={amount} setAmount={setAmount} assetInfo={assetInfo} />
-                  <button className={`p-4 border-2 shadow text-white bg-blue-600 text-lg font-medium rounded place-self-center`}>
+                  <BankingFilter setTransaction={setTransaction} transaction={transaction}/>
+                  <BankingInfo transaction={transaction} amount={amount} setAmount={setAmount} assetInfo={assetInfo} />
+                  {/* <button 
+                    className={` p-4 border-2 shadow text-white bg-blue-600 text-xl font-medium rounded place-self-center `}
+
+                  >
                       Confirm
-                  </button>
+                  </button> */}
+                  <ConfirmButton assetInfo={assetInfo} closeBankingCard={closeModal} transaction={transaction} amount={amount} 
+                    publicAddress={publicAddress} username={username} setAmount={setAmount} />
                 </div>
                 
               </div>
