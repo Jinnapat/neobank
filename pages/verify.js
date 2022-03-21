@@ -55,7 +55,8 @@ const VerifyPage = () => {
     }
 
     return (
-        <div className="border-2 flex flex-col max-w-lg mx-auto space-y-3 p-3 rounded-lg">
+        <div className="border-2 flex flex-col max-w-lg mx-auto space-y-3 p-3 rounded-lg mt-3">
+            <h1 className="font-bold text-2xl text-center">Verify your business</h1>
             <UserInfoZone />
             <BusinessInfoZone 
                 selectedCountry={selectedCountry}
