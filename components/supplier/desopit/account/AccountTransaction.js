@@ -2,19 +2,19 @@ import { useEffect, useState } from "react"
 import TransactionCard from "./TransactionCard"
 import TransactionFilter from "./TransactionFilterTab"
 
-const AccountTransaction = ({transactionData}) => {
+const AccountTransaction = ({transactions}) => {
   const [tab, setTab] = useState("all")
   const [deposits, setDeposits] = useState([])
   const [withdrawal, setWithdrawal] = useState([])
 
   useEffect(() => {
-    let findDeposits = transactionData.filter(data => data.transaction === "deposit")
-    let findWithdrawal = transactionData.filter(data => data.transaction === "withdraw")
+    let findDeposits = transactions.filter(data => data.transaction === "deposit")
+    let findWithdrawal = transactions.filter(data => data.transaction === "withdraw")
 
     setDeposits(findDeposits);
     setWithdrawal(findWithdrawal);
 
-  }, [transactionData])
+  }, [transactions])
   
 
   return (
@@ -24,11 +24,11 @@ const AccountTransaction = ({transactionData}) => {
       
       <TransactionFilter setTab={setTab} />
 
-      {tab === "all" && (transactionData.map((data,index) => <TransactionCard data={data} index={index} />))}
+      {tab === "all" && (transactions.slice().reverse().map((data,index) => <TransactionCard data={data} index={index} />))}
       
-      {tab === "deposit" && (deposits.map((data,index) => <TransactionCard data={data} index={index} />))}
+      {tab === "deposit" && (deposits.slice().reverse().map((data,index) => <TransactionCard data={data} index={index} />))}
       
-      {tab === "withdraw" && (withdrawal.map((data,index) => <TransactionCard data={data} index={index} />))}
+      {tab === "withdraw" && (withdrawal.slice().reverse().map((data,index) => <TransactionCard data={data} index={index} />))}
 
 
     </div>

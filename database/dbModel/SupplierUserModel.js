@@ -13,7 +13,6 @@ const AssetSchema = new mongoose.Schema({
 const SupplierUserSchema = new mongoose.Schema({
     publicAddress:String,
     username:String,
-    assets:[AssetSchema]
 })
 
 let SupplierUserModel =  (mongoose.models && mongoose.models.SupplierUser

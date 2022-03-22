@@ -1,9 +1,11 @@
-import {LOGIN,LOGOUT} from "../actionTypes"
+import {LOGIN,LOGOUT, UPDATEASSETS,UPDATETRANSACTIONS} from "../actionTypes"
 
 // Initial user state
 export const InitailUserState = {
     username: "",
     publicAddress: "",
+    assets:[],
+    transactions:[]
 }
 
 const supplierReducer = (state = InitailUserState,{type,payload}) => {
@@ -15,6 +17,10 @@ const supplierReducer = (state = InitailUserState,{type,payload}) => {
             }
         case LOGOUT : 
             return {...InitailUserState}
+        case UPDATEASSETS : 
+            return {...state,assets:payload.assetsData}
+        case UPDATETRANSACTIONS : 
+            return {...state,transactions:payload.transactions}
         default :
             return state
     }

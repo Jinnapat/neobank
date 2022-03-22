@@ -1,5 +1,7 @@
 import dbConnect from "../../../../database/dbConnect";
 const {SupplierUserModel} = require("../../../../database/dbModel/SupplierUserModel")
+const {SupplierTransactionModel} = require("../../../../database/dbModel/SupplierTransactionModel")
+const {AccountBalanceModel} = require("../../../../database/dbModel/AccountBalanceModel")
 export default async function handler(req,res) {
     const {publicAddress} = req.query
     
@@ -16,6 +18,16 @@ export default async function handler(req,res) {
                     username: "unnamed",
                     publicAddress: publicAddress,
                 }).then(async () => {
+                    await SupplierTransactionModel.create({
+                        publicAddress,
+                        transactionsHistory:[]
+                    });
+
+                    await AccountBalanceModel.create({
+                        publicAddress,
+                        assetsBalance
+                    });
+
                     console.log("Created new user")
                     let newUserData = await SupplierUserModel.findOne({publicAddress:publicAddress});
                     res.status(201).json(newUserData)
@@ -26,30 +38,41 @@ export default async function handler(req,res) {
         } catch (error) {
             console.log(error);
         }
-
-    }else if (req.method === "POST") {
-
-        const {usernameInput,descriptionInput,promptpayIDInput,bankNameInput,bankAccountInput} = JSON.parse(req.body)
-        // Update user data on MongoDB
-        try {
-            let data = await UserModel.findOneAndUpdate({publicAddress:publicAddress},
-                {
-                    username: usernameInput || userData.username ,
-                    description: descriptionInput || userData.description,
-                    // image: image || userData.image,
-                    promptpayID:promptpayIDInput || userData.promptpayID,
-                    bankName:bankNameInput || userData.bankName ,
-                    bankAccount:bankAccountInput || userData.bankAccount 
-                },
-                {
-                    new:true
-                }
-            )
-
-            res.status(201).json(data)
-        } catch (error) {
-            console.log(error);
-        } 
     }
         
 }
+
+let assetsBalance = [
+    {
+        asset:"USDT",
+        apy:5.64,
+        deposits:0,
+        interest:0
+    },
+    {
+        asset:"USDC",
+        apy:5.64,
+        deposits:0,
+        interest:0
+    },
+    {
+        asset:"BUSD",
+        apy:5.64,
+        deposits:0,
+        interest:0
+    },
+    {
+        asset:"DAI",
+        apy:5.64,
+        deposits:0,
+        interest:0
+    },
+    {
+        asset:"UST",
+        apy:5.64,
+        deposits:0,
+        interest:0
+    },
+    
+    
+]

@@ -2,7 +2,7 @@ import Process from "./Process"
 
 const HowItWorkCard = ({cardName,cardDescription,processes}) => {
   return (
-    <div className='grid grid-cols-1 place-items-start w-full mt-6 border-2 p-4 rounded-xl shadow-xl'>
+    <div className='grid grid-cols-1 place-items-start w-full mt-6 border-2 p-4 rounded-xl shadow-xl' key={cardName}>
         <p className='text-2xl font-medium grid grid-cols-1'>
             {cardName}
             <span className='text-gray-500 text-base mt-1'>{cardDescription}</span>

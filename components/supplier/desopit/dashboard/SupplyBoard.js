@@ -1,7 +1,8 @@
 import HeaderBoard from "./board/HeaderBoard"
 import UserAssetInfo from "./board/UserAssetInfo"
 
-const SupplyBoard = ({accountAssetData}) => {
+const SupplyBoard = ({assetsBalance}) => {
+  
   return (
     <div className='grid grid-cols-1 place-items-start gap-y-4 w-8/12'>
       <p className='text-2xl font-bold ml-8'>Supply Assets</p>
@@ -15,9 +16,15 @@ const SupplyBoard = ({accountAssetData}) => {
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                  {accountAssetData.map((assetInfo,index) => (
+                  {/* {accountAssetData.map((assetInfo,index) => (
+                    <UserAssetInfo assetInfo={assetInfo} index={index} />
+                  )) } */}
+
+                  {/* real */}
+                  {assetsBalance?.map((assetInfo,index) => (
                     <UserAssetInfo assetInfo={assetInfo} index={index} />
                   )) }
+
                 </tbody>
               </table>
     </div>

@@ -4,7 +4,6 @@ import userReducer from './reducers/userReducer'
 import supplierReducer from './reducers/supplierReducer'
 import { persistStore,persistReducer } from 'redux-persist'
 import storage from "redux-persist/lib/storage"
-import tradeReducer from './reducers/tradeReducer'
 
 const persistConfig = {
     key:"root",
@@ -13,7 +12,6 @@ const persistConfig = {
 
 const reducers = combineReducers({
     user:userReducer,
-    trade:tradeReducer,
     supplier:supplierReducer
 })
 
