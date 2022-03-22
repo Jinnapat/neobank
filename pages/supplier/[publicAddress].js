@@ -13,12 +13,15 @@ const Deposit = ({supplierData}) => {
     const {publicAddress,username,assets,transactions} = useSelector(state => state.supplier)
     const dispatch = useDispatch();
 
+  
     useEffect(() => {
+      console.log(supplierData)
       dispatch(updateAssets(supplierData.accountBalance.assetsBalance))
       dispatch(updateTransactions(supplierData.transactions.transactionsHistory))
     }, [supplierData])
   
     console.log(assets,transactions)
+    console.log(username)
 
   return (
     <div className='grid grid-cols-1 place-items-center'>

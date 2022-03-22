@@ -1,4 +1,4 @@
-import {LOGIN,LOGOUT,UPDATEASSETS,UPDATETRANSACTIONS} from '../actionTypes.js'
+import {EDITUSERNAME, LOGIN,LOGOUT,UPDATEASSETS,UPDATETRANSACTIONS} from '../actionTypes.js'
 import { InitailUserState } from '../reducers/supplierReducer.js';
 
 // LOGIN: Set User Data we get from wallets
@@ -15,7 +15,6 @@ export const logIn = (userData) => async (dispatch) =>{
         console.log(error);
     }    
 }
-
 
 // LOGOUT: clear User Data we get from wallets
 export const logOut = () => (dispatch) =>
@@ -55,4 +54,19 @@ export const updateTransactions = (transactions) => (dispatch) =>{
         console.log(error);
     }  
 }
+
+// editUsername
+export const editUsername = (newUsername) => async (dispatch) =>{
+    try {
+        dispatch({
+            type: EDITUSERNAME,
+            payload: {
+                username: newUsername,
+            }
+        })    
+    } catch (error) {
+        console.log(error);
+    }    
+}
+
     

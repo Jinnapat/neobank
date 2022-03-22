@@ -19,7 +19,7 @@ export default async function handler(req,res) {
                 transactions:transactioData[0],
                 accountBalance:accountBalanceData[0]
             }
-            res.status(201).json(respondData)
+            res.status(200).json(respondData)
         } catch (error) {
             console.log(error);
         }

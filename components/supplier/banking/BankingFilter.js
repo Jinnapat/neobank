@@ -40,7 +40,7 @@ export default function TransactionFilter({setTransaction,transaction}) {
               key="0"
               className={({ selected }) =>
                 classNames(
-                  'w-full py-2.5 text-xl leading-5 font-bold text-black rounded-lg',
+                  'w-full py-2.5 text-xl leading-5 font-bold text-white rounded-lg',
                   'focus:outline-none',
                   selected
                     ? 'bg-green-500 shadow text-white'
@@ -52,7 +52,7 @@ export default function TransactionFilter({setTransaction,transaction}) {
               key="1"
               className={({ selected }) =>
                 classNames(
-                  'w-full py-2.5 text-xl leading-5 font-bold text-black rounded-lg',
+                  'w-full py-2.5 text-xl leading-5 font-bold text-white rounded-lg',
                   'focus:outline-none',
                   selected
                     ? 'bg-red-500 shadow text-white'

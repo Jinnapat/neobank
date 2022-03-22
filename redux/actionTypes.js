@@ -4,6 +4,7 @@ export const SIGNOUT = "SIGNOUT" ;
 
 export const UPDATEASSETS = "UPDATEASSETS"
 export const UPDATETRANSACTIONS = "UPDATETRANSACTIONS"
+export const EDITUSERNAME = "EDITUSERNAME"
 
 export const LOGIN = "LOGIN" ;
 export const LOGOUT = "LOGOUT" ;
