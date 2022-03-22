@@ -3,7 +3,7 @@ import { logIn } from "../redux/actions/supplierAction";
 const config = require("../next.config")
 
 const connectWallet = async () => {
-    let requestMessage = "Please sign to get sign in to our Decentralized P2P Exchange platform"
+    let requestMessage = "Please sign to get sign in to our Curlent digital banking platform"
 
     if (typeof window !== "undefined") {
         try {
@@ -42,7 +42,7 @@ const connectWallet = async () => {
 
 const connectAndDispatch = (dispatch,router) => {
     
-    connectWallet().then( async ({permission,userAddress,userBalance,userNetwork}) => {
+    connectWallet().then( async ({permission,userAddress}) => {
 
         //! if !permission === true -> You don't get signature permission from user for sign them in your web application.
         if (!permission) {
@@ -61,13 +61,14 @@ const connectAndDispatch = (dispatch,router) => {
             }
         ))
 
-        router.push("/deposit")
+        router.push(`${config.env.devURL}/supplier/${userAddress}`)
     })
 }
 
 const verifyMessage = async ({ message, address, signature }) => {
     try {
       const signerAddress = await ethers.utils.verifyMessage(message, signature);
+      
       if (signerAddress !== address) {
         return false;
       }

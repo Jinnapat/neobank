@@ -2,6 +2,8 @@
 export const SIGNIN = "SIGNIN" ;
 export const SIGNOUT = "SIGNOUT" ;
 
+export const UPDATEASSETS = "UPDATEASSETS"
+export const UPDATETRANSACTIONS = "UPDATETRANSACTIONS"
 
 export const LOGIN = "LOGIN" ;
 export const LOGOUT = "LOGOUT" ;

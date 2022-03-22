@@ -1,4 +1,4 @@
-import {LOGIN,LOGOUT} from '../actionTypes.js'
+import {LOGIN,LOGOUT,UPDATEASSETS,UPDATETRANSACTIONS} from '../actionTypes.js'
 import { InitailUserState } from '../reducers/supplierReducer.js';
 
 // LOGIN: Set User Data we get from wallets
@@ -26,3 +26,33 @@ export const logOut = () => (dispatch) =>
     },
 })
 
+// UPDATEASSETS: update assets info of supplier
+export const updateAssets = (assetsData) => (dispatch) =>{
+    try {
+        console.log("update assets",assetsData)
+        dispatch({
+            type: UPDATEASSETS,
+            payload: {
+                assetsData
+            }
+        })    
+    } catch (error) {
+        console.log(error);
+    }  
+}
+
+
+// UPDATRANSACTIONS: update transactions history of supplier
+export const updateTransactions = (transactions) => (dispatch) =>{
+    try {
+        dispatch({
+            type: UPDATETRANSACTIONS,
+            payload: {
+                transactions
+            }
+        })    
+    } catch (error) {
+        console.log(error);
+    }  
+}
+    

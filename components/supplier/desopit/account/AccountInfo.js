@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import InfoCard from './InfoCard'
 
-const AccountInfo = ({username,publicAddress,assetData}) => {
+const AccountInfo = ({username,publicAddress,assetsBalance}) => {
+    
     const [totalAssetValue, setTotalAssetValue] = useState(0)
     const [totalDeposit, setTotalDeposit] = useState(0)
     const [totalInterest, setTotalInterest] = useState(0)
@@ -9,16 +10,16 @@ const AccountInfo = ({username,publicAddress,assetData}) => {
     const [showAddress, setShowAddress] = useState(false)
 
     useEffect(() => {
-        console.log(username,publicAddress,assetData)
-        let depositSum = assetData?.reduce((total,asset) => {
+
+        let depositSum = assetsBalance?.reduce((total,asset) => {
             return total+asset.deposits
         },0)
         
-        let interestSum = assetData?.reduce((total,asset) => {
+        let interestSum = assetsBalance?.reduce((total,asset) => {
             return total+asset.interest
         },0)
 
-        let apySum = assetData?.reduce((total,asset) => {
+        let apySum = assetsBalance?.reduce((total,asset) => {
             return total+asset.apy
         },0)
 
@@ -27,7 +28,7 @@ const AccountInfo = ({username,publicAddress,assetData}) => {
         setTotalInterest(interestSum);
         setNetAPY(apySum);    
 
-    }, [publicAddress,assetData])
+    }, [publicAddress,assetsBalance])
 
     let assetInfo = [
         {

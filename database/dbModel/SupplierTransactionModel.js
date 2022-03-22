@@ -1,23 +1,20 @@
-// const mongoose = require("mongoose")
+const mongoose = require("mongoose")
 
-// const AssetSchema = new mongoose.Schema({
-//     name:String,
-//     code:String,
-//     deposits:Number,
-//     interest:Number,
-//     balance:Number
-// })
+const TransactionSchema = new mongoose.Schema({
+    transactionNumber:Number,
+    asset:String,
+    transaction:String,
+    amount:Number,
+    date:String,
+})
 
+const SupplierTransactionSchema = new mongoose.Schema({
+    publicAddress:String,
+    transactionsHistory:[TransactionSchema],
+})
 
-// //P2P exchange edition
-// const BusinessUserSchema = new mongoose.Schema({
-//     publicAddress:String,
-//     username:String,
-//     assets:[AssetSchema]
-// })
+let SupplierTransactionModel =  (mongoose.models && mongoose.models.SupplierTransaction
+    ? mongoose.models.SupplierTransaction
+    : mongoose.model('SupplierTransaction', SupplierTransactionSchema))
 
-// let BusinessUserModel =  (mongoose.models && mongoose.models.BusinessUser
-//     ? mongoose.models.BusinessUser
-//     : mongoose.model('BusinessUser', BusinessUserSchema))
-
-// module.exports = {BusinessUserModel}
+module.exports = {SupplierTransactionModel}

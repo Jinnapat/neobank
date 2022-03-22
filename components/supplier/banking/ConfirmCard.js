@@ -7,6 +7,10 @@ import USDC from "../../../public/icons/crypto/USDC.png"
 import DAI from "../../../public/icons/crypto/DAI.png"
 import BUSD from "../../../public/icons/crypto/BUSD.png"
 import UST from "../../../public/icons/crypto/UST.png"
+const config = require("../../../next.config")
+import {signBanking} from "../../../controllers/signBanking"
+import { useDispatch } from 'react-redux';
+import { updateAssets, updateTransactions } from '../../../redux/actions/supplierAction';
 
 export default function ConfirmCard({assetInfo,closeBankingCard,transaction,amount,publicAddress,username,setAmount}) {
   let [isOpen, setIsOpen] = useState(false)
@@ -14,26 +18,53 @@ export default function ConfirmCard({assetInfo,closeBankingCard,transaction,amou
   const [pending, setPending] = useState(false)
   const [success, setSuccess] = useState(false)
   const [showAddress, setShowAddress] = useState(false)
+  const dispatch = useDispatch()
+
   
+  const requestPermission = async () => {
+    await signBanking(username,publicAddress,amount,transaction,asset).then((permission) => {
+      if (permission) {
+        openModal();
+        operateTransaction();
+      }else{
+        closeModal();
+      }
+    })
+    
+  }
+
   function closeModal() {
     setIsOpen(false);
     closeBankingCard();
     setPending(false);
     setSuccess(false);
     setAmount(0);
-  }
+}
 
-  function openModal() {
-    setIsOpen(true)
-    transactionPending();
+  const openModal = () => {
+    setIsOpen(true);
+    setPending(true);
   }
   
-  const transactionPending = () => {
-    setPending(true);
-    setInterval(transactionComplete, 5000);
+  const operateTransaction = async () => {
+    let transactionNumber = Date.now()
+    let fetchBody = {apy,deposits,asset,interest,transaction,amount,publicAddress,username,date:new Date(transactionNumber).toString()}
+    let res = await fetch(`${config.env.devURL}/api/supplier/transaction/${transactionNumber}`,{
+      method:"POST",
+      body:JSON.stringify(fetchBody)
+    })
+    let data = await res.json();
+    console.log(data);
+    transactionComplete(data);
   }
 
-  const transactionComplete = () => {
+  const transactionComplete = (data) => {
+    let {accountData,transactionData} = data;
+    let assetsBalance = accountData.assetsBalance
+    let transactions = transactionData.transactionsHistory
+    console.log(assetsBalance,transactions)
+    dispatch(updateAssets(assetsBalance));
+    dispatch(updateTransactions(transactions))
     setSuccess(true);
     setPending(false);
   }
@@ -43,7 +74,7 @@ export default function ConfirmCard({assetInfo,closeBankingCard,transaction,amou
       <div className="flex items-center justify-center">
         <button
           type="button"
-          onClick={openModal}
+          onClick={requestPermission}
           className="px-2 py-2 text-lg bg-blue-600 bg-opacity-70 hover:bg-opacity-100 text-white font-medium border-2 rounded-md transition duration-100 transform ease-out w-fit">
           Confirm
         </button>

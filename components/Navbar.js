@@ -1,19 +1,14 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
 import { useRouter } from 'next/router'
 import { useDispatch, useSelector } from 'react-redux'
-import { connectAndDispatch } from '../controllers/connectWallet'
-import userIcon from "../public/image/icons/user.png"
-import Image from "next/image"
-import { logOut } from '../redux/actions/userAction'
 import UserNav from './utils/UserNav'
 import SupplierNav from './utils/SupplierNav'
 
 {/* <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfwolAaPkgpsAyeI8AOPK2-8fndpzEqw5JoD2S28PihkM2zCQ/viewform?embedded=true" width="640" height="1083" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe> */}
 const navigation = [
-  { name: 'Deposit', href: '#', current: false,},
+  { name: 'Dashboard', href: '#', current: false,},
   { name: 'Loan', href: '#', current: false,},
   { name: 'Docs', href: '#', current: false,},
   { name: 'Feedback', href: '#', current: false, },
@@ -25,25 +20,15 @@ function classNames(...classes) {
 
 export default function Navbar() {
     const router = useRouter();
-    const dispatch = useDispatch(); 
     const {username,publicAddress} = useSelector(state => state.supplier)
     const {uid,firstName,lastName,businessName,email,receiveEmail} = useSelector(state => state.user)
-
-    // const goToProfile = () => {
-    //   router.push({
-    //     pathname:"/profile/[publicAddress]",
-    //     query:{
-    //       publicAddress:publicAddress
-    //     }
-    //   })
-    // }
-
-    console.log("After dispatch : ",uid,firstName,lastName,businessName,email,receiveEmail)
     
     const goToPage = (page) => {
         switch(page) {
-            case "Deposit":
-                router.push('/deposit');
+            case "Dashboard":
+                router.push({
+                  pathname:`/supplier/${publicAddress}`
+                });
                 break;
             case "Loan":
                 router.push('/loan');
@@ -65,9 +50,6 @@ export default function Navbar() {
               break;    
         }
   }
-
-  console.log(publicAddress)
-    
 
   return (
     <Disclosure as="nav" className="fixed top-0 bg-white shadow w-full">
@@ -95,7 +77,7 @@ export default function Navbar() {
                 <div className="hidden sm:block sm:ml-6">
                   <div className="flex space-x-4">
                     {navigation.map((item) => {
-                      if(item.name === "Deposit" && uid){
+                      if(item.name === "Dashboard" && uid){
                         return (
                           <div></div>
                         )
