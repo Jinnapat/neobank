@@ -8,7 +8,8 @@ const BusinessUserSchema = new mongoose.Schema({
     businessName:String,
     email:String,
     password:String,
-    receiveEmail:Boolean
+    receiveEmail:Boolean,
+    verified:Boolean
 })
 
 let BusinessUserModel =  (mongoose.models && mongoose.models.BusinessUser

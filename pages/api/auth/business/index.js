@@ -17,7 +17,8 @@ export default async function handler(req,res) {
                 businessName:businessName,
                 email:email,
                 password:password,
-                receiveEmail:receiveEmail
+                receiveEmail:receiveEmail,
+                verified:false
             })
             res.status(201).json(data)    
         } catch (error) {

@@ -12,7 +12,8 @@ export const signIn = (userData) => async (dispatch) =>{
                 firstName: userData.firstName,
                 lastName: userData.lastName,
                 receiveEmail: userData.receiveEmail,
-                uid: userData.uid
+                uid: userData.uid,
+                verified: userData.verified
             }
         })    
     } catch (error) {

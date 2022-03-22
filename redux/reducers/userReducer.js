@@ -7,7 +7,8 @@ export const InitailUserState = {
     firstName: "",
     lastName: "",
     receiveEmail: false,
-    uid: ""
+    uid: "",
+    verified: false
 }
 
 const userReducer = (state = InitailUserState,{type,payload}) => {
@@ -19,7 +20,8 @@ const userReducer = (state = InitailUserState,{type,payload}) => {
                 firstName: payload.firstName,
                 lastName: payload.lastName,
                 receiveEmail: payload.receiveEmail,
-                uid: payload.uid
+                uid: payload.uid,
+                verified: payload.verified
             }
         case SIGNOUT : 
             return {...InitailUserState}

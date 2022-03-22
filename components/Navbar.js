@@ -27,8 +27,8 @@ export default function Navbar() {
     const router = useRouter();
     const dispatch = useDispatch(); 
     const {username,publicAddress} = useSelector(state => state.supplier)
-    const {uid,firstName,lastName,businessName,email,receiveEmail} = useSelector(state => state.user)
-
+    const {uid,firstName,lastName,businessName,email,receiveEmail,verified} = useSelector(state => state.user)
+    
     // const goToProfile = () => {
     //   router.push({
     //     pathname:"/profile/[publicAddress]",
@@ -38,15 +38,16 @@ export default function Navbar() {
     //   })
     // }
 
-    console.log("After dispatch : ",uid,firstName,lastName,businessName,email,receiveEmail)
-    
+    console.log("After dispatch : ",uid,firstName,lastName,businessName,email,receiveEmail,verified)
+
     const goToPage = (page) => {
         switch(page) {
             case "Deposit":
                 router.push('/deposit');
                 break;
             case "Loan":
-                router.push('/loan');
+                console.log("test1 " + verified);
+                router.push(verified ? '/loan' : '/verify');
                 break;
             case "Docs":
                 router.push('/docs');
@@ -94,15 +95,15 @@ export default function Navbar() {
                 </div>
                 <div className="hidden sm:block sm:ml-6">
                   <div className="flex space-x-4">
-                    {navigation.map((item) => {
+                    {navigation.map((item, idx) => {
                       if(item.name === "Deposit" && uid){
                         return (
-                          <div></div>
+                          <div key={idx}></div>
                         )
                       }
                       if(item.name === "Loan" && publicAddress){
                         return (
-                          <div></div>
+                          <div key={idx}></div>
                         )
                       }
                       
