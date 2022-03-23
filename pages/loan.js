@@ -3,45 +3,48 @@ import PaddedInputField from '../components/PaddedInputField'
 import { Tab } from "@headlessui/react"
 import CircleContainer from "../components/CircleContainer"
 import { CheckCircleIcon,ExclamationCircleIcon } from '@heroicons/react/outline'
+import MainButton from "../components/MainButton"
 
 const MIN_LOAN = 150
 
 const testPendingFundData = [
-    {date: "22/02/2565", amount: 500},
-    {date: "23/02/2565", amount: 400},
-    {date: "24/02/2565", amount: 300},
-    {date: "25/02/2565", amount: 200},
-    {date: "26/02/2565", amount: 100},
+    {idx: 1111, date: "22/02/2565", amount: 500},
+    {idx: 1111, date: "23/02/2565", amount: 400},
+    {idx: 1111, date: "24/02/2565", amount: 300},
+    {idx: 1111, date: "25/02/2565", amount: 200},
+    {idx: 1111, date: "26/02/2565", amount: 100},
 ]
 
 const testPendingRepayData = [
-    {date: "22/02/2565", amount: 500, due: "22/02/2565"},
-    {date: "23/02/2565", amount: 400, due: "22/02/2565"},
-    {date: "24/02/2565", amount: 300, due: "22/02/2565"},
-    {date: "25/02/2565", amount: 200, due: "22/02/2565"},
-    {date: "26/02/2565", amount: 100, due: "22/02/2565"},
+    {idx: 1111, date: "22/02/2565", amount: 500, due: "22/02/2565"},
+    {idx: 1111, date: "23/02/2565", amount: 400, due: "22/02/2565"},
+    {idx: 1111, date: "24/02/2565", amount: 300, due: "22/02/2565"},
+    {idx: 1111, date: "25/02/2565", amount: 200, due: "22/02/2565"},
+    {idx: 1111, date: "26/02/2565", amount: 100, due: "22/02/2565"},
 ]
 
 const testRepaidData = [
-    {date: "22/02/2565", amount: 500, close: "22/02/2565"},
-    {date: "23/02/2565", amount: 400, close: "22/02/2565"},
-    {date: "24/02/2565", amount: 300, close: "22/02/2565"},
-    {date: "25/02/2565", amount: 200, close: "22/02/2565"},
-    {date: "26/02/2565", amount: 100, close: "22/02/2565"},
+    {idx: 1111, date: "22/02/2565", amount: 500, close: "22/02/2565"},
+    {idx: 1111, date: "23/02/2565", amount: 400, close: "22/02/2565"},
+    {idx: 1111, date: "24/02/2565", amount: 300, close: "22/02/2565"},
+    {idx: 1111, date: "25/02/2565", amount: 200, close: "22/02/2565"},
+    {idx: 1111, date: "26/02/2565", amount: 100, close: "22/02/2565"},
 ]
 
-const LoanCard = ({ prefixes, data}) => {
+const LoanCard = ({ prefixes, data, actionButton}) => {
     return (
         <div className="border-2 rounded-lg shadow mb-3 p-3">
             {prefixes.map(([prefix, field], idx) => {
                 return <p key={idx}>{prefix} {data[field]}</p>
             })}
+            <div className="pt-5 flex flex-col">{actionButton?actionButton:null}</div>
         </div>
     )
 }
 
 const PendingFundZone = ({pendingFundData}) => {
     const prefixes = [
+        ["No.", "idx"],
         ["Requested Date", "date"], 
         ["Requested amount", "amount"]
     ]
@@ -53,18 +56,22 @@ const PendingFundZone = ({pendingFundData}) => {
 
 const PendingRepayZone = ({pendingRepayData}) => {
     const prefixes = [
+        ["No.", "idx"],
         ["Granted Date", "date"], 
         ["Granted amount", "amount"],
         ["Due Date", "due"]
     ]
 
+    const payButton = <MainButton>Pay</MainButton>
+
     return (
-        <ScrollableBox data={pendingRepayData} prefixes={prefixes}/>
+        <ScrollableBox data={pendingRepayData} prefixes={prefixes} actionButton={payButton}/>
     )
 }
 
 const RepayZone = ({repaidData}) => {
     const prefixes = [
+        ["No.", "idx"],
         ["Granted Date", "date"], 
         ["Granted amount", "amount"],
         ["Repaid Date", "close"]
@@ -75,11 +82,11 @@ const RepayZone = ({repaidData}) => {
     )
 }
 
-const ScrollableBox = ({data, prefixes}) => {
+const ScrollableBox = ({data, prefixes, actionButton}) => {
     return (
         <div className="p-2 border-2 rounded overflow-y-auto h-80">
             {data.map((raw, idx)=>{
-                return <LoanCard key={idx} data={raw} prefixes={prefixes}/>
+                return <LoanCard key={idx} data={raw} prefixes={prefixes} actionButton={actionButton}/>
             })}
         </div>
     )
@@ -87,6 +94,10 @@ const ScrollableBox = ({data, prefixes}) => {
 
 const LoanPage = () => {
     const [amount, setAmount] = useState(0)
+    const [repayment, setRepayment] = useState(0)
+    const [remainingCredit, setRemainingCredit] = useState(0)
+    const [creditLimit, setCreditLimit] = useState(0)
+
 
     const getDisplayTabClassNames = ({selected}) => {
         return (
@@ -104,9 +115,9 @@ const LoanPage = () => {
         <div className="border-2 flex flex-col max-w-lg mx-auto space-y-3 px-7 py-5 rounded-lg mt-3">
             <h1 className="font-bold">Dashboard</h1>
             <div className="justify-evenly flex space-y-2">
-                <CircleContainer value={amount} title="Total Loan" color="black"/>
-                <CircleContainer value={amount} title="Total Fund Recieved" color="black"/>
-                <CircleContainer value={amount} title="Total" color="red-500"/>
+                <CircleContainer value={repayment} title="Repayment" color="black"/>
+                <CircleContainer value={remainingCredit} title="Remaining Credit" color="black"/>
+                <CircleContainer value={creditLimit} title="Credit Limit" color="red-500"/>
             </div>
             
             

@@ -2,6 +2,9 @@ import { useState, createRef } from "react"
 import PaddedInputField from '../components/PaddedInputField'
 import SelectBar from "../components/SelectBar"
 import MainButton from "../components/MainButton"
+import { useSelector, useDispatch } from 'react-redux'
+import { useRouter } from 'next/router'
+import { SIGNIN } from '../redux/actionTypes'
 
 const contry_list = [
     "Thailand",
@@ -43,15 +46,30 @@ const BusinessInfoZone = (props) => {
 }
 
 const VerifyPage = () => {
+    const router = useRouter()
+    const dispatch = useDispatch()
+
     const [selectedCountry, setSelectedCountry] = useState('Thailand')
     const [document, setDocument] = useState(null)
     const [businessName, setBusinessName] = useState("")
     const [businessDescription, setBusinessDescription] = useState("")
+    const userData = useSelector(state => state.user)
 
     const fileRef = createRef()
 
     const onSubmit = (e) => {
-        console.log(fileRef.current.files[0])
+        //console.log(fileRef.current.files[0])
+        fetch("api/verify", {
+            method: "POST",
+            body: {
+                email: userData.email
+            }
+        }).then((data) => {
+            dispatch(SIGNIN)
+            router.push("/loan")
+        }, (err) => {
+            alert("cant verify")
+        })
     }
 
     return (
