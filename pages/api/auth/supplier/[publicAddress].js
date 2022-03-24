@@ -8,7 +8,6 @@ export default async function handler(req,res) {
     dbConnect();
     const userData = await SupplierUserModel.findOne({publicAddress:publicAddress})
 
-    console.log(req.method);
     if (req.method === "GET") {
 
         try {

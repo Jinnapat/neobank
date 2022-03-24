@@ -3,7 +3,6 @@ import { useState } from 'react'
 import PaddedInputField from '../../components/PaddedInputField'
 import { CheckCircleIcon,ExclamationCircleIcon } from '@heroicons/react/outline'
 import { useRouter } from 'next/router'
-const config = require("../../next.config")
 import { v4 as uuidv4 } from 'uuid';
 import TermsAndConditions from "../../components/business/TermsAndConditions"
 
@@ -28,7 +27,7 @@ const SignupPage = () => {
         ){
             console.log("All done,Ready to post to database")
             let body = {uid,firstName,lastName,businessName,email,password,receiveEmail};
-            let res = await fetch(`${config.env.devURL}/api/auth/business/`,{
+            let res = await fetch(`/api/auth/business/`,{
                 method:"POST",
                 body:JSON.stringify(body)
             })

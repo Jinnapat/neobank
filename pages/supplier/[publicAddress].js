@@ -56,7 +56,7 @@ export async function getServerSideProps(context) {
   
   let publicAddress = context.params.publicAddress;
   // fetch order data
-  const res = await fetch(`${config.env.devURL}/api/supplier/${publicAddress}`)
+  const res = await fetch(`${config.domainName}/api/supplier/${publicAddress}`)
   const supplierData = await res.json()
   
   

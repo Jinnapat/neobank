@@ -3,7 +3,7 @@ import USDC from "../../../public/icons/crypto/USDC.png"
 import DAI from "../../../public/icons/crypto/DAI.png"
 import BUSD from "../../../public/icons/crypto/BUSD.png"
 import UST from "../../../public/icons/crypto/UST.png"
-import { SwitchHorizontalIcon,LibraryIcon,CashIcon } from "@heroicons/react/outline"
+import { SwitchHorizontalIcon,LibraryIcon } from "@heroicons/react/outline"
 import Image from "next/image"
 
 const DepositBanner = () => {

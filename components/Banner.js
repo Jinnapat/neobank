@@ -1,4 +1,3 @@
-import React from 'react'
 import { SwitchHorizontalIcon,CashIcon,LibraryIcon } from '@heroicons/react/outline'
 import Image from "next/image"
 import USDC from "../public/icons/crypto/USDC.png"
