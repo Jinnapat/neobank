@@ -3,6 +3,7 @@ import { BellIcon,UserCircleIcon } from '@heroicons/react/outline'
 import { Fragment } from 'react'
 import { useDispatch } from 'react-redux'
 import { logOut } from '../../redux/actions/supplierAction'
+import { useRouter } from 'next/router'
 
 
 function classNames(...classes) {
@@ -10,9 +11,11 @@ function classNames(...classes) {
 }
 
 const SupplierNav = ({username,publicAddress}) => {
+  const router = useRouter()
   const dispatch = useDispatch(); 
   const logout = () => {
           dispatch(logOut())
+          router.push("/")
       }
   return (
     <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">

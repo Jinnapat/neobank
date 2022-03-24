@@ -17,6 +17,7 @@ const UserNav = ({uid,firstName,lastName,businessName,email,receiveEmail}) => {
 
     let signUserOut = () => {
         dispatch(signOut());
+        router.push("/")
     }
 
     const goToBusinessDashboard = () => {
