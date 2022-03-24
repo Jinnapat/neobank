@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import InfoCard from './InfoCard'
 import { PencilAltIcon } from '@heroicons/react/outline'
 import { useDispatch } from 'react-redux'
-import { logIn,editUsername } from '../../../../redux/actions/supplierAction'
+import { editUsername } from '../../../../redux/actions/supplierAction'
 
 const AccountInfo = ({username,publicAddress,assetsBalance}) => {
     

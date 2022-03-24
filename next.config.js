@@ -5,7 +5,7 @@ const nextConfig = {
     devURL:"http://localhost:3000",
     mongoDB_URI:"mongodb+srv://gognumbdev:hGSNbHfUjvkJEg8j@mvp.t5iqj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
   },
-  domainName:"http://localhost:3000",
+  domainName:"https://curlent.vercel.app/",
 
 }
 
