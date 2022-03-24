@@ -20,7 +20,7 @@ const AccountTransaction = ({transactions}) => {
   return (
     <div className='grid grid-cols-1 border-2 shadow-xl rounded-xl p-6 space-y-4 w-full place-self-center mt-10'>
       
-      <p className='text-3xl font-bold place-self-start text-blue-600'>Transaction on Nebank</p>
+      <p className='text-3xl font-bold place-self-start text-blue-600'>Transaction on Curlent</p>
       
       <TransactionFilter setTab={setTab} />
 
