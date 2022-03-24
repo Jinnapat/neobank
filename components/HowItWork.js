@@ -87,13 +87,6 @@ let smeProcesses = [
         icon:<PencilAltIcon className='h-12 text-violet-500 col-span-2 ' />,
     },
     {
-        processName:"Waiting for approval",
-        processDetail:"Waiting for approval from Curlent,this phase is consideration.",
-        iconType:"icon",
-        image:"",
-        icon:<ClockIcon className='h-12 text-blue-700 col-span-2 ' />,
-    },
-    {
         processName:"Check approval",
         processDetail:"Check your approval if you get approved for your credit,check your credit details on your SME dashboard.",
         iconType:"icon",
