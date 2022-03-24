@@ -20,7 +20,7 @@ const SigninPage = () => {
 
     const signUserIn = async () => {
         if (email!=="" && password!==""){
-            let data = await fetch(`${config.env.devURL}/api/auth/business/signin/${email}/${password}`,)
+            let data = await fetch(`/api/auth/business/signin/${email}/${password}`,)
             .then(res => res.json())
             console.log(data)
             dispatch(signIn(data));
