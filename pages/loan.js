@@ -8,27 +8,33 @@ import MainButton from "../components/MainButton"
 const MIN_LOAN = 150
 
 const testPendingFundData = [
+    /*
     {idx: 1111, date: "22/02/2565", amount: 500},
     {idx: 1111, date: "23/02/2565", amount: 400},
     {idx: 1111, date: "24/02/2565", amount: 300},
     {idx: 1111, date: "25/02/2565", amount: 200},
     {idx: 1111, date: "26/02/2565", amount: 100},
+    */
 ]
 
 const testPendingRepayData = [
+    /*
     {idx: 1111, date: "22/02/2565", amount: 500, due: "22/02/2565"},
     {idx: 1111, date: "23/02/2565", amount: 400, due: "22/02/2565"},
     {idx: 1111, date: "24/02/2565", amount: 300, due: "22/02/2565"},
     {idx: 1111, date: "25/02/2565", amount: 200, due: "22/02/2565"},
     {idx: 1111, date: "26/02/2565", amount: 100, due: "22/02/2565"},
+    */
 ]
 
 const testRepaidData = [
+    /*
     {idx: 1111, date: "22/02/2565", amount: 500, close: "22/02/2565"},
     {idx: 1111, date: "23/02/2565", amount: 400, close: "22/02/2565"},
     {idx: 1111, date: "24/02/2565", amount: 300, close: "22/02/2565"},
     {idx: 1111, date: "25/02/2565", amount: 200, close: "22/02/2565"},
     {idx: 1111, date: "26/02/2565", amount: 100, close: "22/02/2565"},
+    */
 ]
 
 const LoanCard = ({ prefixes, data, actionButton}) => {
@@ -95,9 +101,10 @@ const ScrollableBox = ({data, prefixes, actionButton}) => {
 const LoanPage = () => {
     const [amount, setAmount] = useState(0)
     const [repayment, setRepayment] = useState(0)
-    const [remainingCredit, setRemainingCredit] = useState(0)
-    const [creditLimit, setCreditLimit] = useState(0)
+    const [remainingCredit, setRemainingCredit] = useState(500)
+    const [creditLimit, setCreditLimit] = useState(500)
 
+    const [pendingFundData, setPendingFundData] = useState([])
 
     const getDisplayTabClassNames = ({selected}) => {
         return (
@@ -111,13 +118,20 @@ const LoanPage = () => {
         return askedAmount >= MIN_LOAN
     }
 
+    const onRequestLoanPressed = (amount) => {
+        setRepayment(amount)
+        setRemainingCredit(creditLimit - amount)
+        const newDate = new Date
+        setPendingFundData([{idx: 1, date: newDate.toDateString(), amount: amount + " THB"}])
+    }
+
     return (
         <div className="border-2 flex flex-col max-w-lg mx-auto space-y-3 px-7 py-5 rounded-lg mt-3">
             <h1 className="font-bold">Dashboard</h1>
             <div className="justify-evenly flex space-y-2">
-                <CircleContainer value={repayment} title="Repayment" color="black"/>
-                <CircleContainer value={remainingCredit} title="Remaining Credit" color="black"/>
-                <CircleContainer value={creditLimit} title="Credit Limit" color="red-500"/>
+                <CircleContainer value={repayment + " THB"} title="Repayment" color="black"/>
+                <CircleContainer value={remainingCredit + " THB"} title="Remaining Credit" color="black"/>
+                <CircleContainer value={creditLimit + " THB"} title="Credit Limit" color="red-500"/>
             </div>
             
             
@@ -127,12 +141,12 @@ const LoanPage = () => {
                     : 
                     (<div className="flex space-x-2">
                         <ExclamationCircleIcon className='h-6 text-red-500' />
-                        <p>minimal is {MIN_LOAN} USD</p>
+                        <p>minimal is {MIN_LOAN} THB</p>
                     </div>)
                 }
             </div>
             <PaddedInputField type="number" placeholder="amount" setter={setAmount} value={amount}/>
-            <button className="bg-blue-600 p-2 rounded-sm text-white">Submit</button>
+            <button className="bg-blue-600 p-2 rounded-sm text-white" onClick={() => onRequestLoanPressed(amount)}>Submit</button>
 
             <Tab.Group>
                 <Tab.List className="flex p-1 space-x-1 bg-blue-900/20 rounded-xl">
@@ -148,7 +162,7 @@ const LoanPage = () => {
                 </Tab.List>
                 <Tab.Panels>
                     <Tab.Panel>
-                        <PendingFundZone pendingFundData={testPendingFundData}/>
+                        <PendingFundZone pendingFundData={pendingFundData}/>
                     </Tab.Panel>
                     <Tab.Panel>
                         <PendingRepayZone pendingRepayData={testPendingRepayData}/>
