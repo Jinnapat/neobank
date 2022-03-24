@@ -6,6 +6,7 @@ import { CheckCircleIcon,ExclamationCircleIcon } from '@heroicons/react/outline'
 import MainButton from "../components/MainButton"
 import RecievedFund from '../components/business/RecievedFund'
 import RepayFund from "../components/business/RepayFund"
+import Head from "next/head"
 
 const MIN_LOAN = 150
 
@@ -154,6 +155,7 @@ const LoanPage = () => {
 
     return (
         <div className="border-2 flex flex-col max-w-lg mx-auto space-y-3 px-7 py-5 rounded-lg mt-3">
+            <Head><title>Curlent Credit</title></Head>
             <h1 className="font-bold">Dashboard</h1>
             <div className="justify-evenly flex space-y-2">
                 <CircleContainer value={repayment + " THB"} title="Repayment" color="black"/>

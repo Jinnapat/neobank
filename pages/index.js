@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>Neobank</title>
+        <title>Curlent</title>
         <meta name="description" content="Neobank for deposit crypto and get loan for SMEs" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

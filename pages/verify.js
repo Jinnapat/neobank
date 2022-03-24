@@ -5,6 +5,7 @@ import MainButton from "../components/MainButton"
 import { useSelector, useDispatch } from 'react-redux'
 import { useRouter } from 'next/router'
 import { signIn } from "../redux/actions/userAction"
+import Head from "next/head"
 
 const contry_list = [
     "Thailand",
@@ -78,6 +79,7 @@ const VerifyPage = () => {
 
     return (
         <div className="border-2 flex flex-col max-w-lg mx-auto space-y-3 p-3 rounded-lg mt-3">
+            <Head><title>Curlent Verify</title></Head>
             <h1 className="font-bold text-2xl text-center">Verify your business</h1>
             <UserInfoZone />
             <BusinessInfoZone 

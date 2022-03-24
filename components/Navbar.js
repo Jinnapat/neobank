@@ -9,7 +9,7 @@ import SupplierNav from './utils/SupplierNav'
 {/* <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfwolAaPkgpsAyeI8AOPK2-8fndpzEqw5JoD2S28PihkM2zCQ/viewform?embedded=true" width="640" height="1083" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe> */}
 const navigation = [
   { name: 'Dashboard', href: '#', current: false,},
-  { name: 'Loan', href: '#', current: false,},
+  { name: 'Credit', href: '#', current: false,},
   { name: 'Docs', href: '#', current: false,},
   { name: 'Feedback', href: '#', current: false, },
 ]
@@ -30,8 +30,8 @@ export default function Navbar() {
                   pathname:`/supplier/${publicAddress}`
                 });
                 break;
-            case "Loan":
-                router.push(verified?'/loan':"verify");
+            case "Credit":
+                router.push(verified?'/loan':"/verify");
                 break;
             case "Docs":
                 router.push('/docs');
@@ -71,7 +71,7 @@ export default function Navbar() {
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex-shrink-0 flex items-center">
                     <h1 className="hover:cursor-pointer font-bold text-xl text-blue-600" onClick={() => router.push("/")}>
-                        CURLENT
+                        Curlent
                     </h1>
                 </div>
                 <div className="hidden sm:block sm:ml-6">

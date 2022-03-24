@@ -23,7 +23,7 @@ const SigninPage = () => {
             .then(res => res.json())
             console.log(data)
             dispatch(signIn(data));
-            router.push("/business/dashboard")
+            router.push("/loan")
         }
     }
 
