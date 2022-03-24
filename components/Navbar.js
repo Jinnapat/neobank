@@ -52,7 +52,7 @@ export default function Navbar() {
   }
 
   return (
-    <Disclosure as="nav" className="fixed top-0 bg-white shadow w-full">
+    <Disclosure as="nav" className="z-50 fixed top-0 bg-white shadow w-full">
       {({ open }) => (
         <>
           <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -71,7 +71,7 @@ export default function Navbar() {
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex-shrink-0 flex items-center">
                     <h1 className="hover:cursor-pointer font-bold text-xl text-blue-600" onClick={() => router.push("/")}>
-                        Neobank
+                        CURLENT
                     </h1>
                 </div>
                 <div className="hidden sm:block sm:ml-6">
