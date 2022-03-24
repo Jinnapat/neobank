@@ -2,8 +2,7 @@ import { useEffect, useState } from 'react'
 import InfoCard from './InfoCard'
 import { PencilAltIcon } from '@heroicons/react/outline'
 import { useDispatch } from 'react-redux'
-import { logIn,editUsername } from '../../../../redux/actions/supplierAction'
-const config = require("../../../../next.config")
+import { editUsername } from '../../../../redux/actions/supplierAction'
 
 const AccountInfo = ({username,publicAddress,assetsBalance}) => {
     
@@ -61,12 +60,12 @@ const AccountInfo = ({username,publicAddress,assetsBalance}) => {
     ]
 
     const submitEditUsername = async () => {
-        let data = await fetch(`${config.env.devURL}/api/supplier/info/${publicAddress}`,{
+        let data = await fetch(`/api/supplier/info/${publicAddress}`,{
             method:"POST",
             body:JSON.stringify({usernameInput})
         }).then(res => res.json())   
         console.log(data)
-        dispatch(editUsername(data.username))
+        dispatch(editUsername(usernameInput))
     }
     
     return (

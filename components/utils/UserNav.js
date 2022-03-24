@@ -1,7 +1,7 @@
 import { Menu, Transition } from '@headlessui/react'
 import { BellIcon,UserCircleIcon } from '@heroicons/react/outline'
 import { useRouter } from 'next/router'
-import React, { Fragment } from 'react'
+import { Fragment } from 'react'
 import { useDispatch } from 'react-redux'
 import { signOut } from '../../redux/actions/userAction'
 

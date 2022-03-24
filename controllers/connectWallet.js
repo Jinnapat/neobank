@@ -1,6 +1,5 @@
 import { ethers } from "ethers";
 import { logIn } from "../redux/actions/supplierAction";
-const config = require("../next.config")
 
 const connectWallet = async () => {
     let requestMessage = "Please sign to get sign in to our Curlent digital banking platform"
@@ -51,7 +50,7 @@ const connectAndDispatch = (dispatch,router) => {
         }
 
         //* if !permission === false -> You get permission from user to sign them in your web application , let's continue
-        const res = await fetch(`${config.env.devURL}/api/auth/supplier/${userAddress}`)
+        const res = await fetch(`/api/auth/supplier/${userAddress}`)
         const userData = await res.json()
         
         dispatch(logIn(
@@ -61,7 +60,7 @@ const connectAndDispatch = (dispatch,router) => {
             }
         ))
 
-        router.push(`${config.env.devURL}/supplier/${userAddress}`)
+        router.push(`/supplier/${userAddress}`)
     })
 }
 

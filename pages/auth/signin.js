@@ -5,7 +5,6 @@ import SupplierSignin from "../../components/supplier/SupplierSignin"
 import Head from "next/head"
 import { useRouter } from "next/router"
 import { useDispatch } from "react-redux"
-const config = require("../../next.config")
 import {signIn} from "../../redux/actions/userAction"
 
 const SigninPage = () => {

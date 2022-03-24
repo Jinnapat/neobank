@@ -7,7 +7,6 @@ import USDC from "../../../public/icons/crypto/USDC.png"
 import DAI from "../../../public/icons/crypto/DAI.png"
 import BUSD from "../../../public/icons/crypto/BUSD.png"
 import UST from "../../../public/icons/crypto/UST.png"
-const config = require("../../../next.config")
 import {signBanking} from "../../../controllers/signBanking"
 import { useDispatch } from 'react-redux';
 import { updateAssets, updateTransactions } from '../../../redux/actions/supplierAction';
@@ -49,7 +48,7 @@ export default function ConfirmCard({assetInfo,closeBankingCard,transaction,amou
   const operateTransaction = async () => {
     let transactionNumber = Date.now()
     let fetchBody = {apy,deposits,asset,interest,transaction,amount,publicAddress,username,date:new Date(transactionNumber).toString()}
-    let res = await fetch(`${config.env.devURL}/api/supplier/transaction/${transactionNumber}`,{
+    let res = await fetch(`/api/supplier/transaction/${transactionNumber}`,{
       method:"POST",
       body:JSON.stringify(fetchBody)
     })

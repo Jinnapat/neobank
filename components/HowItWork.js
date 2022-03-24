@@ -1,6 +1,6 @@
 import MetaMask from "../public/image/metamask.png"
 import { DatabaseIcon } from '@heroicons/react/solid'
-import { CashIcon, CheckCircleIcon, ClipboardCheckIcon, ClipboardListIcon, ClockIcon, LoginIcon,PencilAltIcon } from '@heroicons/react/outline'
+import { CreditCardIcon,CashIcon, CheckCircleIcon, ClipboardCheckIcon, ClipboardListIcon, ClockIcon, LoginIcon,PencilAltIcon } from '@heroicons/react/outline'
 import HowItWorkCard from './utils/HowItWorkCard'
 
 const HowItWork = () => {
@@ -43,14 +43,14 @@ let supplierProcesses = [
     },
     {
         processName:"Deposit Stablecoins",
-        processDetail:"Read term and condition for your interest and Deposit your stablecoins to platform liquidity pool.        ",
+        processDetail:"Read term and condition for your interest and Deposit your stablecoins to Curlent digital bank.",
         iconType:"icon",
         image:"",
         icon:<DatabaseIcon className='h-14 text-amber-400 col-span-2' />,
     },
     {
-        processName:"Check Account Balance",
-        processDetail:"Check your account balance after deposit to get information about your saving,interest and transaction.",
+        processName:"Check Account Info",
+        processDetail:"Check your account info after deposit to get information about your saving,interest and transaction.",
         iconType:"icon",
         image:"",
         icon:<ClipboardCheckIcon className='h-14 text-green-500 col-span-2 ' />,
@@ -60,49 +60,49 @@ let supplierProcesses = [
 let smeProcesses = [
     {
         processName:"Signup",
-        processDetail:"Signup your new account to use Neobank.",
+        processDetail:"Signup your new account to use Curlent.",
         iconType:"icon",
         image:"",
         icon:<ClipboardListIcon className='h-14 text-amber-500 ' />,
     },
     {
         processName:"Signin",
-        processDetail:"Signin into Neobank to get access to new financial services for SMEs.",
+        processDetail:"Signin into Curlent to get access to buy-now-pay-later services for SMEs.",
         iconType:"icon",
         image:"",
         icon:<LoginIcon className='h-14 text-blue-600 col-span-2' />,
     },
     {
         processName:"Verify",
-        processDetail:"Verify your own business by KYC and prove of your business information to give us your business insight for consideration about your loan request.",
+        processDetail:"Verify your own business by KYC and prove of your business information to give us your business insight for consideration about your credit request.",
         iconType:"icon",
         image:"",
         icon:<CheckCircleIcon className='h-12 text-green-500 col-span-2 ' />,
     },
     {
-        processName:"Request loan",
-        processDetail:"Request to get loan from Neobank as you need for your project.",
+        processName:"Request credit",
+        processDetail:"Request to receive credit from Curlent as you need for your business operation we will consider your credit limit.",
         iconType:"icon",
         image:"",
         icon:<PencilAltIcon className='h-12 text-violet-500 col-span-2 ' />,
     },
     {
-        processName:"Waiting for approval",
-        processDetail:"Waiting for approval from Neobank,this phase is consideration.",
-        iconType:"icon",
-        image:"",
-        icon:<ClockIcon className='h-12 text-blue-700 col-span-2 ' />,
-    },
-    {
         processName:"Check approval",
-        processDetail:"Check your approval if you get approved for your loan,check your credit details on your SME profile info.",
+        processDetail:"Check your approval if you get approved for your credit,check your credit details on your SME dashboard.",
         iconType:"icon",
         image:"",
         icon:<ClipboardCheckIcon className='h-12 text-green-500 col-span-2 ' />,
     },
     {
-        processName:"Repay your loan with interest",
-        processDetail:"Verify your own business by KYC and prove of your business information to give us your business insight for consideration about your loan request.",
+        processName:"Spend your credit with our merchant partners.",
+        processDetail:"Spend your buy-now-pay-later credit to buy products and services with our merchant partners without pay your money at the Point of Sale.",
+        iconType:"icon",
+        image:"",
+        icon:<CreditCardIcon className='h-12 text-blue-500 col-span-2 ' />,
+    },
+    {
+        processName:"Repay your credit as deal with us.",
+        processDetail:"Repay your money to Curlent equal to credit you use plus services charge that deal with Curlent on conditions.",
         iconType:"icon",
         image:"",
         icon:<CashIcon className='h-12 text-amber-500 col-span-2 ' />,

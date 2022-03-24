@@ -1,8 +1,7 @@
 import { ethers } from "ethers";
-import { verifyMessage } from "./connectWallet";
 
 
-const signBanking = async (username,publicAddress,amount,transaction,asset) => {
+const signBanking = async (username,amount,transaction,asset) => {
     let requestMessage = `Please sign this request to confirm your ${transaction} ${amount} ${asset} for account  ${username}`
 
     if (typeof window !== "undefined") {

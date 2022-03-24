@@ -1,4 +1,3 @@
-import React from 'react'
 import { SwitchHorizontalIcon,CashIcon,LibraryIcon } from '@heroicons/react/outline'
 import Image from "next/image"
 import USDC from "../public/icons/crypto/USDC.png"
@@ -15,7 +14,7 @@ const Banner = () => {
         <div className='grid grid-cols-8 place-content-center'>
             
             <p className='col-span-4 px-4 text-4xl font-bold'>
-                Supply Stablecoins from anywhere in the world and Request loan on local currency
+                Buy-now-pay-later for SMEs powered by Stablecoins
             </p>
 
             <div className='col-span-4 grid grid-cols-10 w-full place-items-center pl-4'>
@@ -56,7 +55,7 @@ const Banner = () => {
             </div>
 
             <div className='col-span-4 text-2xl font-medium'>
-                <p>Stablecoins supplier are the people who deposit stablecoins to our platform and they will get interest.</p>
+                <p>Stablecoins supplier are the people who deposit stablecoins to our platform and they will receive attractive interest.</p>
             </div>
 
         </div>
@@ -66,11 +65,11 @@ const Banner = () => {
 
             <div className='grid grid-cols-1 place-items-start col-span-4 gap-y-2'>
                 <p className='text-4xl font-bold'>SMEs</p>
-                <p className='text-gray-500 text-lg'>request to access finance</p>
+                <p className='text-gray-500 text-lg'>request to access buy-now-pay-later credit</p>
             </div>
 
             <div className='col-span-4 text-2xl font-medium'>
-                <p>SMEs are small and medium enterprises whose operate their own business on emerging economy such as Thailand,Indonesia,Philippines,Vietnam,etc.</p>
+                <p>SMEs are small and medium enterprises whose use buy-now-pay-later credit to buy the products and services related to their business opertaion and pay us later on deal.</p>
             </div>
 
 

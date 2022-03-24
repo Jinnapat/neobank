@@ -3,8 +3,6 @@ const {BusinessUserModel} = require("../../../../database/dbModel/BusinessUserMo
 
 export default async function handler(req,res) {
     dbConnect();
-
-    console.log(req.method);
     
     if (req.method === "POST") {
         const {uid,firstName,lastName,businessName,email,password,receiveEmail} = JSON.parse(req.body)
