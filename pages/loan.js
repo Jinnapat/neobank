@@ -4,8 +4,12 @@ import { Tab } from "@headlessui/react"
 import CircleContainer from "../components/CircleContainer"
 import { CheckCircleIcon,ExclamationCircleIcon } from '@heroicons/react/outline'
 import MainButton from "../components/MainButton"
+import RecievedFund from '../components/business/RecievedFund'
+import RepayFund from "../components/business/RepayFund"
 
 const MIN_LOAN = 150
+
+let tempRepaidData = []
 
 const testPendingFundData = [
     /*
@@ -60,7 +64,7 @@ const PendingFundZone = ({pendingFundData}) => {
     )
 }
 
-const PendingRepayZone = ({pendingRepayData}) => {
+const PendingRepayZone = ({pendingRepayData, setIsOpenRepay}) => {
     const prefixes = [
         ["No.", "idx"],
         ["Granted Date", "date"], 
@@ -68,7 +72,7 @@ const PendingRepayZone = ({pendingRepayData}) => {
         ["Due Date", "due"]
     ]
 
-    const payButton = <MainButton>Pay</MainButton>
+    const payButton = <MainButton onClick={() => setIsOpenRepay(true)}>Pay</MainButton>
 
     return (
         <ScrollableBox data={pendingRepayData} prefixes={prefixes} actionButton={payButton}/>
@@ -104,7 +108,16 @@ const LoanPage = () => {
     const [remainingCredit, setRemainingCredit] = useState(500)
     const [creditLimit, setCreditLimit] = useState(500)
 
+    const [isOpen, setIsOpen] = useState(false)
+    const [isOpenRepay, setIsOpenRepay] = useState(false)
+
+    function closeModal() {
+        setIsOpen(false)
+    }
+
     const [pendingFundData, setPendingFundData] = useState([])
+    const [pendingRepayData, setPendingRepayData] = useState([])
+    const [repaidData, setRepaidData] = useState([])
 
     const getDisplayTabClassNames = ({selected}) => {
         return (
@@ -119,10 +132,24 @@ const LoanPage = () => {
     }
 
     const onRequestLoanPressed = (amount) => {
-        setRepayment(amount)
-        setRemainingCredit(creditLimit - amount)
-        const newDate = new Date
+        const newDate = new Date()
+        const dueDate = new Date()
+        dueDate.setDate(newDate.getDate() + 30);
         setPendingFundData([{idx: 1, date: newDate.toDateString(), amount: amount + " THB"}])
+        tempRepaidData = [{idx: 1, date: newDate.toDateString(), amount: amount + " THB", close: newDate.toDateString()}]
+        setTimeout(() => {
+            setIsOpen(true)
+            setRepayment(amount)
+            setRemainingCredit(creditLimit - amount)
+            setPendingRepayData([{idx: 1, date: newDate.toDateString(), amount: amount + " THB", due: dueDate.toDateString()}])
+        }, 5000)
+    }
+
+    const onConfirm = () => {
+        setRepaidData(tempRepaidData)
+        setIsOpenRepay(false)
+        setRepayment(0)
+        setRemainingCredit(creditLimit)
     }
 
     return (
@@ -165,13 +192,16 @@ const LoanPage = () => {
                         <PendingFundZone pendingFundData={pendingFundData}/>
                     </Tab.Panel>
                     <Tab.Panel>
-                        <PendingRepayZone pendingRepayData={testPendingRepayData}/>
+                        <PendingRepayZone pendingRepayData={pendingRepayData} setIsOpenRepay={setIsOpenRepay}/>
                     </Tab.Panel>
                     <Tab.Panel>
-                        <RepayZone repaidData={testRepaidData}/>
+                        <RepayZone repaidData={repaidData}/>
                     </Tab.Panel>
                 </Tab.Panels>
             </Tab.Group>
+
+            <RecievedFund isOpen={isOpen} closeModal={closeModal}/>
+            <RepayFund isOpen={isOpenRepay} closeModal={() => setIsOpenRepay(false)} onConfirm={onConfirm}/>
         </div>
     )
 }
