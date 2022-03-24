@@ -10,7 +10,7 @@ const HowItWorkCard = ({cardName,cardDescription,processes}) => {
         <div className='flex-col mt-4'>
             {processes.map((process,index) => (
                 <Process processName={process.processName} processDetail={process.processDetail}
-                iconType={process.iconType} icon={process.icon} image={process.image} index={index} />    
+                iconType={process.iconType} icon={process.icon} image={process.image} index={index} key={index}/>    
             )) }
         </div>
     </div>

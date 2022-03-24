@@ -116,7 +116,7 @@ const AccountInfo = ({username,publicAddress,assetsBalance}) => {
             </p>  
         </div>    
 
-        {assetInfo.map((info,index) => <InfoCard data={info.data} name={info.name} unit={info.unit} />)}
+        {assetInfo.map((info,index) => <InfoCard data={info.data} name={info.name} unit={info.unit} key={index}/>)}
         
     </div>
   )

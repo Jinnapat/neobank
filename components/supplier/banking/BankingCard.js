@@ -86,7 +86,7 @@ export default function BankingCard({assetInfo}) {
                   className="text-lg font-medium leading-6 text-gray-900 flex justify-between items-center"
                 >
                     <div className='flex items-center space-x-2'>
-                        <Image src={imageSrc[asset]} height={50} width={50} />
+                        <Image src={imageSrc[asset]} height={50} width={50} alt=""/>
                         <p className='text-xl'>{asset}</p>
                     </div>
                     <XCircleIcon className='h-8 text-red-500 cursor-pointer' onClick={closeModal}/>

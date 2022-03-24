@@ -21,7 +21,7 @@ function classNames(...classes) {
 export default function Navbar() {
     const router = useRouter();
     const {username,publicAddress} = useSelector(state => state.supplier)
-    const {uid,firstName,lastName,businessName,email,receiveEmail} = useSelector(state => state.user)
+    const {uid,firstName,lastName,businessName,email,receiveEmail,verified} = useSelector(state => state.user)
     
     const goToPage = (page) => {
         switch(page) {
@@ -31,7 +31,7 @@ export default function Navbar() {
                 });
                 break;
             case "Loan":
-                router.push('/loan');
+                router.push(verified?'/loan':"verify");
                 break;
             case "Docs":
                 router.push('/docs');

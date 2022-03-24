@@ -18,7 +18,7 @@ const Deposit = ({supplierData}) => {
       console.log(supplierData)
       dispatch(updateAssets(supplierData.accountBalance.assetsBalance))
       dispatch(updateTransactions(supplierData.transactions.transactionsHistory))
-    }, [supplierData])
+    }, [supplierData, dispatch])
   
     console.log(assets,transactions)
     console.log(username)

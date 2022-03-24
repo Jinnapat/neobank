@@ -4,7 +4,7 @@ import SelectBar from "../components/SelectBar"
 import MainButton from "../components/MainButton"
 import { useSelector, useDispatch } from 'react-redux'
 import { useRouter } from 'next/router'
-import { SIGNIN } from '../redux/actionTypes'
+import { signIn } from "../redux/actions/userAction"
 
 const contry_list = [
     "Thailand",
@@ -59,13 +59,16 @@ const VerifyPage = () => {
 
     const onSubmit = (e) => {
         //console.log(fileRef.current.files[0])
-        fetch("api/verify", {
+        fetch("api/business/verify", {
             method: "POST",
-            body: {
-                email: userData.email
-            }
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({email: userData.email})
         }).then((data) => {
-            dispatch(SIGNIN)
+            console.log("test", data)
+            const temp = {...userData}
+            temp.verified = true
+            console.log("test3", temp)
+            dispatch(signIn(temp))
             router.push("/loan")
         }, (err) => {
             alert("cant verify")

@@ -24,11 +24,11 @@ const AccountTransaction = ({transactions}) => {
       
       <TransactionFilter setTab={setTab} />
 
-      {tab === "all" && (transactions.slice().reverse().map((data,index) => <TransactionCard data={data} index={index} />))}
+      {tab === "all" && (transactions.slice().reverse().map((data,index) => <TransactionCard data={data} index={index} key={index}/>))}
       
-      {tab === "deposit" && (deposits.slice().reverse().map((data,index) => <TransactionCard data={data} index={index} />))}
+      {tab === "deposit" && (deposits.slice().reverse().map((data,index) => <TransactionCard data={data} index={index} key={index}/>))}
       
-      {tab === "withdraw" && (withdrawal.slice().reverse().map((data,index) => <TransactionCard data={data} index={index} />))}
+      {tab === "withdraw" && (withdrawal.slice().reverse().map((data,index) => <TransactionCard data={data} index={index} key={index}/>))}
 
 
     </div>

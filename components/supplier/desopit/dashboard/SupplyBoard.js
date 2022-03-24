@@ -10,8 +10,8 @@ const SupplyBoard = ({assetsBalance}) => {
         <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                   <tr>
-                    {boardHeaderNames.map(name => 
-                      <HeaderBoard headerName={name} />
+                    {boardHeaderNames.map((name, index) => 
+                      <HeaderBoard headerName={name} key={index}/>
                     )}
                   </tr>
                 </thead>
@@ -22,7 +22,7 @@ const SupplyBoard = ({assetsBalance}) => {
 
                   {/* real */}
                   {assetsBalance?.map((assetInfo,index) => (
-                    <UserAssetInfo assetInfo={assetInfo} index={index} />
+                    <UserAssetInfo assetInfo={assetInfo} index={index} key={index}/>
                   )) }
 
                 </tbody>

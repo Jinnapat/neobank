@@ -20,7 +20,7 @@ export default function MyModal() {
           onClick={openModal}
           className="px-4 py-2 font-medium "
         >
-          I have read and agree to Neobank's 
+          I have read and agree to Neobank&apos;s 
           <span className='text-blue-500 hover:underline hover:decoration-1'> Terms of Service</span>
         </button>
       </div>
@@ -65,7 +65,7 @@ export default function MyModal() {
                   as="h3"
                   className="text-lg font-medium leading-6 text-gray-900"
                 >
-                  Neobank's Terms and Conditions
+                  Neobank&apos;s Terms and Conditions
                 </Dialog.Title>
                 <div className="mt-2">
                   <p className="text-sm text-gray-500">

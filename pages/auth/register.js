@@ -145,7 +145,7 @@ const SignupPage = () => {
                     }
                 </p>
                 {!checkRePassword(rePassword) && 
-                    <p className='text-sm text-red-500'>Sorry, Re-enter password doesn't match password </p> 
+                    <p className='text-sm text-red-500'>Sorry, Re-enter password doesn&apos;t match password </p> 
                 }
                 
                 <PaddedInputField type="password" placeholder="re-enter password" setter={setRePassword} value={rePassword} />

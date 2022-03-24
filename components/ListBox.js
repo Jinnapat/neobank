@@ -15,7 +15,7 @@ export default function SelectCurrency({setCurrency}) {
 
   useEffect(() => {
     dispatch(selectCurrency(selected))
-  }, [selected])
+  }, [selected, dispatch])
   
 
 
@@ -27,7 +27,7 @@ export default function SelectCurrency({setCurrency}) {
             <div className="mt-1 relative">
                 <Listbox.Button className="relative w-full bg-white border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm cursor-pointer">
                 <div className="flex items-center">
-                    <Image src={selected.image} height={30} width={30} objectFit="cover" className="flex-shrink-0 h-6 w-6 rounded-full" />
+                    <Image src={selected.image} height={30} width={30} objectFit="cover" className="flex-shrink-0 h-6 w-6 rounded-full" alt=""/>
                     <section className='flex-col'>
                         <p className="ml-3 block truncate">{selected.code}</p>
                         <p className='ml-3 text-gray-500'>{selected.name}</p>
@@ -60,7 +60,7 @@ export default function SelectCurrency({setCurrency}) {
                         {({ selected, active }) => (
                         <>
                             <div className="flex items-center">
-                            <Image src={currency.image} height={30} width={30} objectFit="cover" className="flex-shrink-0 h-6 w-6 rounded-full" />
+                            <Image src={currency.image} height={30} width={30} objectFit="cover" className="flex-shrink-0 h-6 w-6 rounded-full" alt=""/>
                             <section className='flex-col'>
                                 <p className="ml-3 block truncate">{currency.code}</p>
                                 <p className={classNames(selected ? 'font-semibold' : 'font-normal', 'ml-3 block truncate text-gray-500')}>{currency.name}</p>
