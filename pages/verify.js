@@ -23,7 +23,8 @@ const UserInfoZone = () => {
                 <PaddedInputField size="w-full" type="text" placeholder="First name" />
                 <PaddedInputField size="w-full" type="text" placeholder="Last name" />
             </div>
-            
+            <label>Identification document</label>
+            <PaddedInputField size="w-full" type="file" />
         </div>
     )
 }
@@ -39,7 +40,7 @@ const BusinessInfoZone = (props) => {
             <SelectBar selectedItem={props.selectedCountry} setSelectedItem={props.setSelectedCountry} choices={contry_list}/>
             <label>Business descriptions</label>
             <textarea className="p-2 border-2 rounded h-60 resize-none" placeholder="business descriptions" onChange={props.setBusinessDescription}/>
-            <label>Statement</label>
+            <label>Finance Statement</label>
             <PaddedInputField type="file" placeholder="file" setter={props.setDocument} other={{ref: props.fileRef}}/>
         </div>
     )

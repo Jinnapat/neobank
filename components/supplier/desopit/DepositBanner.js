@@ -22,11 +22,11 @@ const DepositBanner = () => {
                 <div className='col-span-4 space-y-4'>
                     <p className='text-gray-500'>Stablecoins Supplier</p>
                     <div className='grid  grid-cols-4'>
-                        <Image src={USDT} width={40} height={40} />
-                        <Image src={USDC} width={40} height={40} />
-                        <Image src={BUSD} width={40} height={40} />
-                        <Image src={DAI} width={40} height={40} />
-                        <Image src={UST} width={40} height={40} />
+                        <Image src={USDT} width={40} height={40} alt=""/>
+                        <Image src={USDC} width={40} height={40} alt=""/>
+                        <Image src={BUSD} width={40} height={40} alt=""/>
+                        <Image src={DAI} width={40} height={40} alt=""/>
+                        <Image src={UST} width={40} height={40} alt=""/>
                     </div>
                 </div>
                 
