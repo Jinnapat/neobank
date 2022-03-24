@@ -50,7 +50,7 @@ const SigninPage = () => {
             <div className="max-w-lg mx-auto border-2 rounded-lg px-7 py-5 space-y-5 mt-4 w-6/12">
                 <Head><title>Sign In</title></Head>
                 <h1 className="font-extrabold text-xl text-center">Sign In to 
-                    <span className="text-blue-600"> Neobank</span>
+                    <span className="text-blue-600"> Curlent</span>
                 </h1>
                 <Tab.Group>
                     <Tab.List>
