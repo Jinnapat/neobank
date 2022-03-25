@@ -32,7 +32,7 @@ const Banner = () => {
                 <SwitchHorizontalIcon className='col-span-1' />
 
                 <div className='col-span-2 space-y-2'>
-                    <p className='text-gray-500'>Neobank </p>
+                    <p className='text-gray-500'>Curlent </p>
                     <LibraryIcon className='text-blue-600' />
                 </div>
 
