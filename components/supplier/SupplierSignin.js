@@ -12,7 +12,7 @@ const dispatch = useDispatch()
 
     return (
         <div className="border-t-2 space-y-3 flex flex-col text-lg py-4">
-            <p className="text-xl font-medium">Please connect your crypto wallet to sign in Neobank</p>
+            <p className="text-xl font-medium">Please connect your crypto wallet to sign in Curlent</p>
             <ConnectWallet logUserIn={logUserIn} />
         </div>
     )
