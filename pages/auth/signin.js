@@ -12,10 +12,6 @@ const SigninPage = () => {
     const [password, setPassword] = useState('')
     const router = useRouter();
     const dispatch = useDispatch();
-    
-    const goToRegister = () => {
-        router.push("/auth/register")
-    }
 
     const signUserIn = async () => {
         if (email!=="" && password!==""){
@@ -47,7 +43,7 @@ const SigninPage = () => {
     
     return (
         <div className="grid grid-cols-1 place-items-center">
-            <div className="max-w-lg mx-auto border-2 rounded-lg px-7 py-5 space-y-5 mt-4 w-6/12">
+            <div className="max-w-lg mx-auto border-2 rounded-lg px-7 py-5 space-y-5 mt-4 w-full">
                 <Head><title>Sign In</title></Head>
                 <h1 className="font-extrabold text-xl text-center">Sign In to 
                     <span className="text-blue-600"> Curlent</span>
@@ -70,17 +66,6 @@ const SigninPage = () => {
                         </Tab.Panel>
                     </Tab.Panels>
                 </Tab.Group>
-            </div>
-
-            <div className="mt-2 flex space-x-4 place-item">
-                <p className="transition duration-150 transform ease-out hover:text-blue-500 cursor-pointer"
-                    onClick={goToRegister}>
-                    forget you password?
-                </p>
-                <p className="transition duration-150 transform ease-out hover:text-blue-500 cursor-pointer"
-                    onClick={goToRegister}>
-                    don&apos;t have an account?
-                </p>
             </div>
         </div>
     )
