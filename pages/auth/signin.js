@@ -42,7 +42,7 @@ const SigninPage = () => {
     }
     
     return (
-        <div className="grid grid-cols-1 place-items-center">
+        <div className="grid grid-cols-1 place-items-center p-2">
             <div className="max-w-lg mx-auto border-2 rounded-lg px-7 py-5 space-y-5 mt-4 w-full">
                 <Head><title>Sign In</title></Head>
                 <h1 className="font-extrabold text-xl text-center">Sign In to 
