@@ -62,15 +62,15 @@ const SignupPage = () => {
     }
 
     return (
-        <form className="grid grid-cols-1 w-6/12 max-w-xl mx-auto space-y-3 border-2 p-4 rounded shadow mt-4">
+        <form className="grid grid-cols-1 max-w-lg space-y-3 border-2 p-6 rounded shadow mt-4 mx-2 md:mx-auto">
             <Head>
                 <title>Register</title>
             </Head>
             <h1 className='place-self-center text-xl font-bold '>Register your business account</h1>
             <p className='text-lg font-medium'>Create account for SMEs </p>
             {/*  */}
-            <div className='flex space-x-4 '>
-                <div className='grid grid-cols-1 place-items-start gap-y-1 my-4 w-6/12'>
+            <div className='flex flex-wrap justify-between'>
+                <div className='grid grid-cols-1 place-items-start gap-y-1 my-4 w-full md:w-1/2 md:pr-1'>
                     <p className='font-medium flex space-x-2'>
                         <span>First name</span>
                         {checkName(firstName) ? 
@@ -79,10 +79,10 @@ const SignupPage = () => {
                             <ExclamationCircleIcon className='h-6 text-red-500' />
                         }
                     </p>
-                    <PaddedInputField type="text" placeholder="First name" setter={setFirstName}  value={firstName} />
+                    <PaddedInputField type="text" placeholder="First name" setter={setFirstName}  value={firstName} size='w-full'/>
                 </div>
 
-                <div className='grid grid-cols-1 place-items-start gap-y-1 my-4'>
+                <div className='grid grid-cols-1 place-items-start gap-y-1 my-4 w-full md:w-1/2'>
                     <p className='font-medium flex space-x-2'>
                         <span>Last name</span>
                         {checkName(lastName) ? 
@@ -92,7 +92,7 @@ const SignupPage = () => {
                         }
                     </p>
                     
-                    <PaddedInputField type="text" placeholder="Last name" setter={setLastName}   value={lastName} />    
+                    <PaddedInputField type="text" placeholder="Last name" setter={setLastName}   value={lastName} size='w-full'/>    
                 </div>
             </div>
 
@@ -105,7 +105,7 @@ const SignupPage = () => {
                         <ExclamationCircleIcon className='h-6 text-red-500' />
                     }
                 </p>
-                <PaddedInputField type="text" placeholder="Business name" setter={setBusinessName}   value={businessName}  />
+                <PaddedInputField type="text" placeholder="Business name" setter={setBusinessName}   value={businessName} size='w-full' />
             </div>
 
             <div className='grid grid-cols-1 place-items-start gap-y-1 my-4'>
@@ -117,7 +117,7 @@ const SignupPage = () => {
                         <ExclamationCircleIcon className='h-6 text-red-500' />
                     }
                 </p>
-                <PaddedInputField type="text" placeholder="Email" setter={setEmail} value={email} />
+                <PaddedInputField type="text" placeholder="Email" setter={setEmail} value={email} size='w-full'/>
             </div>
 
             <div className='grid grid-cols-1 place-items-start gap-y-1 my-4'>
@@ -130,7 +130,7 @@ const SignupPage = () => {
                     }
                 </p>
                 <p className='text-sm text-gray-500'>Please type at least 8 characters that includes a-z and 0-9 </p>
-                <PaddedInputField type="password" placeholder="password" setter={setPassword} value={password} />
+                <PaddedInputField type="password" placeholder="password" setter={setPassword} value={password} size='w-full'/>
             </div>
 
 
@@ -147,11 +147,11 @@ const SignupPage = () => {
                     <p className='text-sm text-red-500'>Sorry, Re-enter password doesn&apos;t match password </p> 
                 }
                 
-                <PaddedInputField type="password" placeholder="re-enter password" setter={setRePassword} value={rePassword} />
+                <PaddedInputField type="password" placeholder="re-enter password" setter={setRePassword} value={rePassword} size='w-full'/>
             </div>
             
             <div 
-                className="border-2 px-4 py-2 w-10/12 rounded-lg shadow transition duration-150 flex items-center justify-start space-x-6 font-medium"
+                className="border-2 px-4 py-2 rounded-lg shadow transition duration-150 flex items-center justify-start space-x-6 font-medium"
                 >
                 <input type="checkbox" name="receive-email" value={receiveEmail} onChange={() => setReceiveEmail(!receiveEmail)}/>
                 <label htmlFor="receive-email" className=''>
@@ -160,7 +160,7 @@ const SignupPage = () => {
             </div>
             
             <div 
-                className="border-2 px-4 py-1 w-fit rounded-lg shadow transition duration-150 flex items-center space-x-2"
+                className="border-2 px-4 py-1 w-fit rounded-lg shadow transition duration-150 flex items-center space-x-2 w-full"
                 >
                 
                 <input type="checkbox" name="term-condition" value={termsAndConditions} onChange={() => setTermsAndConditions(!termsAndConditions)}/>
