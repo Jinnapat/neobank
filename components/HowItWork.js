@@ -5,7 +5,7 @@ import HowItWorkCard from './utils/HowItWorkCard'
 
 const HowItWork = () => {
   return (
-    <div className='grid grid-cols-1 w-10/12 lg:w-8/12 px-20 place-items-center mt-10'>
+    <div className='grid grid-cols-1 place-items-center mt-10 mx-3 max-w-4xl'>
         
         <div className='grid grid-cols-1 place-self-start'>
             <p className='text-4xl font-bold'>How it work</p>
