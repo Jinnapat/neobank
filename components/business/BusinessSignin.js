@@ -45,12 +45,12 @@ const BusinessSignin = ({setEmail, setPassword,email,password,signUserIn}) => {
                     Sign in
                 </button>
 
-                <div className="mt-2 flex space-x-4 place-item justify-center mt-5">
-                    <p className="transition duration-150 transform ease-out hover:text-blue-500 cursor-pointer"
+                <div className="mt-2 flex flex-col items-center mt-5">
+                    <p className="transition duration-150 transform ease-out hover:text-blue-500 cursor-pointer text-sm"
                         onClick={goToRegister}>
                         forget you password?
                     </p>
-                    <p className="transition duration-150 transform ease-out hover:text-blue-500 cursor-pointer"
+                    <p className="transition duration-150 transform ease-out hover:text-blue-500 cursor-pointer text-sm"
                         onClick={goToRegister}>
                         don&apos;t have an account?
                     </p>

@@ -28,14 +28,14 @@ const SigninPage = () => {
             return (
                 <div className={`${selected ? "bg-blue-600 text-white p-2 rounded-sm font-medium" 
                         : "bg-blue-600 opacity-50 text-white p-2 rounded-sm font-medium" } `}>
-                    <span>Business</span>
+                    <span>Business</span><br/>
                     <span className="text-base"> ( SMEs )</span>
                 </div>)
         }else if (text === "Supplier"){
             return (
                 <div className={`${selected ? "bg-amber-300 text-balck p-2 rounded-sm font-medium" 
                         : "bg-amber-300 opacity-50 text-balck p-2 rounded-sm font-medium" } `}>
-                    <span>Supplier</span>
+                    <span>Supplier</span><br/>
                     <span className="text-base"> ( Crypto )</span>
                 </div>)
         }        

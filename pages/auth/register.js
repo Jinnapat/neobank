@@ -129,7 +129,7 @@ const SignupPage = () => {
                         <ExclamationCircleIcon className='h-6 text-red-500' />
                     }
                 </p>
-                <p className='text-sm text-gray-500'>Please type at least 8 characters that includes a-z and 0-9 </p>
+                <p className='text-sm text-red-500'>Please type at least 8 characters that includes a-z and 0-9 </p>
                 <PaddedInputField type="password" placeholder="password" setter={setPassword} value={password} size='w-full'/>
             </div>
 
@@ -168,7 +168,7 @@ const SignupPage = () => {
                     <TermsAndConditions />
                 </label>
             </div>
-            <button className='bg-amber-300 text-black max-w-sm px-4 py-2  text-lg w-6/12 place-self-center rounded font-medium' 
+            <button className='bg-amber-300 text-black max-w-sm px-4 py-2  text-lg place-self-center rounded font-medium' 
                 onClick={onSubmit}>
                     Create Account
             </button>
