@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useRouter } from 'next/router'
 import { signIn } from "../redux/actions/userAction"
 import Head from "next/head"
+import ApproveSMEPage from '../components/admin/ApproveSMEPage'
 
 const contry_list = [
     "Thailand",
@@ -47,7 +48,7 @@ const BusinessInfoZone = (props) => {
     )
 }
 
-const VerifyPage = () => {
+const UserVerifyPage = () => {
     const router = useRouter()
     const dispatch = useDispatch()
 
@@ -66,10 +67,8 @@ const VerifyPage = () => {
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({email: userData.email})
         }).then((data) => {
-            console.log("test", data)
             const temp = {...userData}
             temp.verified = true
-            console.log("test3", temp)
             dispatch(signIn(temp))
             router.push("/loan")
         }, (err) => {
@@ -79,7 +78,6 @@ const VerifyPage = () => {
 
     return (
         <div className="border-2 flex flex-col max-w-lg mx-auto space-y-3 p-3 rounded-lg mt-3">
-            <Head><title>Curlent Verify</title></Head>
             <h1 className="font-bold text-2xl text-center">Verify your business</h1>
             <UserInfoZone />
             <BusinessInfoZone 
@@ -91,6 +89,19 @@ const VerifyPage = () => {
                 fileRef={fileRef}
             />
             <MainButton onClick={onSubmit}>verify</MainButton>
+        </div>
+    )
+}
+
+const VerifyPage = () => {
+    const userData = useSelector(state => state.user)
+
+    return (
+        <div>
+            <Head><title>Curlent Verify</title></Head>
+            <div className="p-2">
+                {userData.email == "curlent@admin.com" ? <ApproveSMEPage />: <UserVerifyPage />}
+            </div>
         </div>
     )
 }
